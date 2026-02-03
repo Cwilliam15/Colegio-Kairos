@@ -1,0 +1,283 @@
+/* Reset básico: elimina márgenes, rellenos y establece box model y fuente global */
+* {
+  margin: 0;           /* Elimina todos los márgenes externos */
+  padding: 0;          /* Elimina todos los rellenos internos */
+  box-sizing: border-box; /* El padding y border se incluyen en el ancho/alto */
+  font-family: "Poppins", sans-serif; /* Fuente predeterminada para todo */
+}
+
+/* Establece el alto completo del documento HTML */
+html {
+  height: 100%;        /* Asegura que html ocupe toda la altura de la ventana */
+}
+
+/* Estilos generales del cuerpo del documento */
+body {
+  margin: 0;           /* Sin margen exterior */
+  padding: 0;          /* Sin relleno interno */
+  font-family: Verdana; /* Fuente alternativa */
+  background: linear-gradient(#003566, #001d3d); /* Fondo degradado de azul oscuro */
+}
+
+/* Contenedor principal del formulario de login */
+.caja__login {
+  position: absolute;   /* Posicionamiento absoluto respecto al body */
+  top: 50%;            /* Centrado vertical (parte superior al 50%) */
+  left: 50%;           /* Centrado horizontal (lado izquierdo al 50%) */
+  width: 400px;        /* Ancho fijo del contenedor */
+  padding: 40px;       /* Relleno interno */
+  transform: translate(-50%, -50%); /* Centrado preciso */
+  background: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+  box-shadow: 0 15px 25px rgba(0, 255, 255, 0.4); /* Sombra con tono cian */
+  border-radius: 10px;  /* Bordes redondeados */
+}
+
+/* Estilo para el título principal */
+.caja__login h2 {
+  margin: 0 0 10px;    /* Margen inferior de 10px */
+  padding: 0;          /* Sin relleno interno */
+  color: #00ffff;      /* Color cian */
+  text-align: center;  /* Texto centrado */
+}
+
+/* Estilo para el subtítulo */
+.caja__login p {
+  font-size: 16px;     /* Tamaño de fuente */
+  margin-bottom: 30px; /* Margen inferior */
+  color: #ccc;         /* Color gris claro */
+  text-align: center;  /* Texto centrado */
+}
+
+/* Estilo para el logo del colegio */
+.logo__colegio {
+  display: block;      /* Hace que la imagen sea un bloque */
+  margin: 0 auto 20px auto; /* Centrado con margen inferior de 20px */
+  width: 120px;        /* Ancho fijo */
+  height: auto;        /* Altura automática para mantener proporción */
+  filter: drop-shadow(0 0 15px #00ffff88); /* Sombra exterior cian con transparencia */
+}
+
+/* Contenedor de cada campo de entrada */
+.caja__login-campo {
+  position: relative;  /* Permite posicionamiento absoluto de elementos hijos */
+}
+
+/* Estilo de los inputs del formulario */
+.caja__login-campo input {
+  width: 100%;         /* Ocupa todo el ancho disponible */
+  padding: 10px 0;     /* Relleno vertical */
+  font-size: 16px;     /* Tamaño de fuente */
+  color: #fff;         /* Texto blanco */
+  margin-bottom: 30px; /* Margen inferior */
+  border: none;        /* Sin borde normal */
+  border-bottom: 1px solid #fff; /* Solo borde inferior blanco */
+  outline: none;       /* Elimina el contorno al enfocar */
+  background: transparent; /* Fondo transparente */
+}
+
+/* Estilo para las etiquetas de los campos */
+.caja__login-campo label {
+  position: absolute;  /* Posicionamiento absoluto respecto al contenedor */
+  top: 0;              /* Alineado arriba */
+  left: 0;             /* Alineado a la izquierda */
+  padding: 10px 0;     /* Relleno vertical */
+  font-size: 16px;     /* Tamaño de fuente */
+  color: #fff;         /* Texto blanco */
+  pointer-events: none; /* Ignora eventos del mouse */
+  transition: 0.5s;    /* Transición suave para animaciones */
+}
+
+/* Animación para las etiquetas cuando el input está enfocado o tiene valor */
+.caja__login-campo input:focus ~ label,
+.caja__login-campo input:valid ~ label {
+  top: -20px;         /* Sube la etiqueta */
+  left: 0;            /* Mantiene alineación izquierda */
+  color: #00ffff;     /* Cambia color a cian */
+  font-size: 12px;    /* Reduce tamaño de fuente */
+}
+
+/* Estilo base del botón del formulario */
+.caja__login form button {
+  position: relative;  /* Para posicionar elementos hijos absolutamente */
+  display: inline-block;
+  padding: 10px 20px;  /* Relleno interno */
+  color: #00ffff;      /* Texto cian */
+  font-size: 16px;     /* Tamaño de fuente */
+  text-decoration: none; /* Sin subrayado */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  overflow: hidden;    /* Oculta lo que salga del botón */
+  transition: 0.5s;    /* Transición suave */
+  margin-top: 40px;    /* Margen superior */
+  letter-spacing: 4px; /* Espaciado entre letras */
+  background: transparent; /* Fondo transparente */
+  border: none;        /* Sin borde */
+  cursor: pointer;     /* Cursor tipo pointer */
+}
+
+/* Efecto hover del botón */
+.caja__login button:hover {
+  background: #00ffff; /* Fondo cian */
+  color: #000;         /* Texto negro */
+  border-radius: 5px;  /* Bordes redondeados */
+  box-shadow: 0 0 5px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff, 0 0 100px #00ffff; /* Múltiples sombras para efecto de brillo */
+}
+
+/* Estilo base para los spans de animación del botón */
+.caja__login button span {
+  position: absolute;  /* Posicionamiento absoluto respecto al botón */
+  display: block;      /* Comportamiento de bloque */
+}
+
+/* Animación del borde superior (primer span) */
+.caja__login button span:nth-child(1) {
+  top: 0;              /* Alineado arriba */
+  left: -100%;         /* Comienza fuera del botón por la izquierda */
+  width: 100%;         /* Ancho completo */
+  height: 2px;         /* Altura pequeña (línea) */
+  background: linear-gradient(90deg, transparent, #00ffff); /* Degradado horizontal */
+  animation: animacionBorde1 1s linear infinite; /* Animación infinita */
+}
+
+/* Animación del borde derecho (segundo span) */
+.caja__login button span:nth-child(2) {
+  top: -100%;          /* Comienza arriba del botón */
+  right: 0;            /* Alineado a la derecha */
+  width: 2px;          /* Ancho pequeño (línea vertical) */
+  height: 100%;        /* Altura completa */
+  background: linear-gradient(180deg, transparent, #00ffff); /* Degradado vertical */
+  animation: animacionBorde2 1s linear infinite; /* Animación infinita */
+  animation-delay: 0.25s; /* Retraso para efecto secuencial */
+}
+
+/* Animación del borde inferior (tercer span) */
+.caja__login button span:nth-child(3) {
+  bottom: 0;           /* Alineado abajo */
+  right: -100%;        /* Comienza fuera del botón por la derecha */
+  width: 100%;         /* Ancho completo */
+  height: 2px;         /* Altura pequeña (línea) */
+  background: linear-gradient(270deg, transparent, #00ffff); /* Degradado horizontal inverso */
+  animation: animacionBorde3 1s linear infinite; /* Animación infinita */
+  animation-delay: 0.5s; /* Retraso para efecto secuencial */
+}
+
+/* Animación del borde izquierdo (cuarto span) */
+.caja__login button span:nth-child(4) {
+  bottom: -100%;       /* Comienza abajo del botón */
+  left: 0;             /* Alineado a la izquierda */
+  width: 2px;          /* Ancho pequeño (línea vertical) */
+  height: 100%;        /* Altura completa */
+  background: linear-gradient(360deg, transparent, #00ffff); /* Degradado vertical inverso */
+  animation: animacionBorde4 1s linear infinite; /* Animación infinita */
+  animation-delay: 0.75s; /* Retraso para efecto secuencial */
+}
+
+/* Animación para el borde superior (mueve de izquierda a derecha) */
+@keyframes animacionBorde1 {
+  0% { left: -100%; }  /* Comienza fuera por la izquierda */
+  50%, 100% { left: 100%; } /* Termina fuera por la derecha */
+}
+
+/* Animación para el borde derecho (mueve de arriba a abajo) */
+@keyframes animacionBorde2 {
+  0% { top: -100%; }   /* Comienza arriba del botón */
+  50%, 100% { top: 100%; } /* Termina abajo del botón */
+}
+
+/* Animación para el borde inferior (mueve de derecha a izquierda) */
+@keyframes animacionBorde3 {
+  0% { right: -100%; } /* Comienza fuera por la derecha */
+  50%, 100% { right: 100%; } /* Termina fuera por la izquierda */
+}
+
+/* Animación para el borde izquierdo (mueve de abajo a arriba) */
+@keyframes animacionBorde4 {
+  0% { bottom: -100%; } /* Comienza abajo del botón */
+  50%, 100% { bottom: 100%; } /* Termina arriba del botón */
+}
+
+/* Clase para animación de rotación y escala del logo */
+.rotate-scale-down-diag-2 {
+  -webkit-animation: rotate-scale-down-diag-2 0.7s;
+          animation: rotate-scale-down-diag-2 0.7s;
+}
+
+/* Definición de la animación de rotación y escala (versión para Webkit) */
+@-webkit-keyframes rotate-scale-down-diag-2 {
+  0% {
+      -webkit-transform: scale(1) rotate3d(-1, 1, 0, 0deg);
+              transform: scale(1) rotate3d(-1, 1, 0, 0deg);
+  }
+  50% {
+      -webkit-transform: scale(0.5) rotate3d(-1, 1, 0, 180deg);
+              transform: scale(0.5) rotate3d(-1, 1, 0, 180deg);
+  }
+  100% {
+      -webkit-transform: scale(1) rotate3d(-1, 1, 0, 360deg);
+              transform: scale(1) rotate3d(-1, 1, 0, 360deg);
+  }
+}
+
+/* Definición estándar de la animación de rotación y escala */
+@keyframes rotate-scale-down-diag-2 {
+  0% {
+      -webkit-transform: scale(1) rotate3d(-1, 1, 0, 0deg);
+              transform: scale(1) rotate3d(-1, 1, 0, 0deg);
+  }
+  50% {
+      -webkit-transform: scale(0.5) rotate3d(-1, 1, 0, 180deg);
+              transform: scale(0.5) rotate3d(-1, 1, 0, 180deg);
+  }
+  100% {
+      -webkit-transform: scale(1) rotate3d(-1, 1, 0, 360deg);
+              transform: scale(1) rotate3d(-1, 1, 0, 360deg);
+  }
+}
+
+/* Efecto máquina de escribir para el subtítulo */
+.typewriter {
+  overflow: hidden;    /* Oculta el texto que desborde */
+  border-right: 2px solid #00ffff; /* Cursor parpadeante */
+  white-space: nowrap; /* Evita saltos de línea */
+  letter-spacing: 2px; /* Espaciado entre letras */
+  width: 0;           /* Comienza sin ancho (texto oculto) */
+  display: inline-block; /* Permite animación de width */
+  animation: 
+      typing 3s steps(30, end) forwards, /* Animación de escritura */
+      blink-caret 0.75s step-end infinite; /* Animación de cursor */
+}
+
+/* Versión específica para el subtítulo */
+.subtitle {
+  animation: 
+      typing 4s steps(40, end) forwards, /* Animación más larga */
+      blink-caret 0.75s step-end infinite; /* Mismo cursor */
+  animation-delay: 0s; /* Sin retraso */
+}
+
+/* Animación de escritura (aumenta el ancho progresivamente) */
+@keyframes typing {
+  from { width: 0 }   /* Comienza sin texto visible */
+  to { width: 100% }  /* Termina con todo el texto visible */
+}
+
+/* Animación de cursor parpadeante */
+@keyframes blink-caret {
+  0%, 100% { border-color: #00ffff; } /* Cursor visible */
+  50% { border-color: transparent; }  /* Cursor invisible */
+}
+.recuperar__contrasena {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.recuperar__contrasena a {
+  color: #808080; /* Color gris */
+  text-decoration: none;
+  font-size: 12px; /* Texto más pequeño */
+  transition: color 0.3s;
+}
+
+.recuperar__contrasena a:hover {
+  color: #606060; /* Gris más oscuro al pasar el mouse */
+  text-decoration: underline;
+}

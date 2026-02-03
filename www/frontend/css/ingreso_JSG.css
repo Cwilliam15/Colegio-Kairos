@@ -1,0 +1,158 @@
+/* admin-config.css – estilos neón oscuros para formularios y tablas */
+main{
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.5s ease;
+}
+
+main.min-main
+{
+    margin-left: 80px;
+}
+.container {
+  width: 100%;
+  max-width: 1024px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: rgb(15, 16, 16);
+}
+
+.forms {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.form-box {
+  background: rgba(0,8,20,0.8);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow:
+    0 0 15px rgba(0,255,255,0.2),
+    inset 0 0 10px rgba(0,255,255,0.1);
+  flex: 1 1 30%;
+  min-width: 240px;
+}
+
+.form-box h3 {
+  margin-bottom: 1rem;
+  color: #0ff;
+  text-shadow: 0 0 6px #0ff;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.form-box input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(0,255,255,0.5);
+  border-radius: 0.5rem;
+  background: rgba(0,8,20,0.6);
+  color: #0ff;
+}
+
+.form-box input:focus {
+  outline: none;
+  border-color: #0ff;
+  box-shadow: 0 0 8px #0ff;
+}
+
+.form-box button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #00ffff;
+  border: none;
+  border-radius: 0.5rem;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,255,255,0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.form-box button:hover {
+  box-shadow: 0 0 20px rgba(0,255,255,0.5);
+}
+
+.mensaje {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.mensaje.exito {
+  background: rgba(40,167,69,0.2);
+  color: #28a745;
+}
+
+.mensaje.error {
+  background: rgba(220,53,69,0.2);
+  color: #dc3545;
+}
+
+.tables {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.table-box {
+  flex: 1 1 32%;
+  background: rgba(0,8,20,0.8);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow:
+    0 0 15px rgba(0,255,255,0.2),
+    inset 0 0 10px rgba(0,255,255,0.1);
+  min-width: 280px;
+}
+
+.table-box h3 {
+  margin-bottom: 1rem;
+  color: #0ff;
+  text-shadow: 0 0 6px #0ff;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.table-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-box th, .table-box td {
+  padding: 0.5rem;
+  border: 1px solid rgba(0,255,255,0.3);
+  text-align: center;
+}
+
+.table-box th {
+  background: rgba(0,255,255,0.1);
+  color: #0ff;
+}
+
+.table-box tr:nth-child(even) {
+  background: rgba(255,255,255,0.05);
+}
+
+.btn-delete {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  background: #dc3545;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.btn-delete:hover {
+  background: #c82333;
+}

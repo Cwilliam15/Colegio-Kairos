@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /login-register/frontend/html/
+  
+  RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} version [NC]
+RewriteRule ^((?!(?:[A-Z]+|[0-9]+)$)[0-9A-Z]{13,})$ ingresos_alumnos.php?music=$1 [NC,L,QSA]
+</IfModule>

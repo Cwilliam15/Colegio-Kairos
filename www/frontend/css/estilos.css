@@ -1,0 +1,544 @@
+:root {
+    --primary-color: #1a237e;
+    --secondary-color: #00bcd4;
+    --accent-color: #ff5722;
+    --light-color: #f5f5f5;
+    --dark-color: #212121;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+.gradient-text {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+.tech-font {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: white;/*color de fondo*/
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);/* sombra*/
+    padding: 1rem 0;
+     position: relative;
+  overflow: hidden;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-container img {
+    height: 50px;
+}
+
+.logo-container h1 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.logo-container h1 span {
+    color: var(--secondary-color);
+}
+
+.icons-container {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.notification-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.notification-icon span {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+}
+
+.icon-btn {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.icon-btn:hover {
+    color: var(--secondary-color);
+}
+
+/* Main Content */
+main {
+    padding: 2rem 0;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.menu-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+
+}
+.menu-card .menu-icon {
+  display: flex;
+  align-items: center;    /* centra vertical */
+  justify-content: center;/* centra horizontal */
+  /* si quieres, fija una altura para igualar todas las tarjetas */
+  height: 80px;
+}
+.menu-icon {
+  /* transición suave para cualquier transform */
+  transition: transform 0.3s ease;
+}
+.menu-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.menu-card-link .menu-card {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.menu-card-link .menu-card:hover {
+  transform: scale(1.02);
+}
+
+/* al pasar el ratón por la tarjeta, mueve el icono hacia arriba */
+.menu-card:hover .menu-icon {
+  transform: translateY(-8px);
+}
+
+.menu-card h4 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.menu-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hero-section {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+    .hero-section {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.hero-text h2 span {
+    display: block;
+    color: var(--secondary-color);
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    max-width: 500px;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.hero-text p::before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -0.5rem;
+    font-size: 2rem;
+    color: var(--secondary-color);
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo img {
+    height: 40px;
+}
+
+.footer-logo p {
+    font-size: 0.9rem;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* Estilos para el menú de ingreso */
+  .ingreso-card summary::-webkit-details-marker { 
+    display: none; }
+  
+  .ingreso-card {
+    position: relative;
+    border-radius: .5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: #fff;
+    cursor: pointer;
+  }
+  
+  /* Flecha giratoria */
+  .ingreso-card .arrow {
+    transition: transform .2s ease-in-out;
+  }
+  .ingreso-card[open] .arrow {
+    transform: rotate(180deg);
+  }
+  
+  /* Submenú oculto por defecto */
+  .ingreso-card .sub-menu {
+    display: none;
+    margin: 0;
+    padding: .5rem 0;
+    list-style: none;
+    border-top: 1px solid #eee;
+  }
+  /* Cuando <details> está abierto, mostramos el submenú */
+  .ingreso-card[open] .sub-menu {
+    display: block;
+  }
+  
+  /* Estilo de cada opción */
+  .ingreso-card .sub-menu li a {
+    display: block;
+    padding: .5rem 1rem;
+    color: #007bff;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .ingreso-card .sub-menu li a:hover {
+    background: #f0f8ff;
+  }
+  
+  /* Overlay semi-transparente */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  /* Contenido del modal */
+  .modal-content {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 320px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);/* sombra */
+  }
+  
+  /* Botón de cierre */
+.close-btn {
+    position: absolute;
+    top: 0.5rem; right: 0.5rem;
+    background: transparent;
+    color: #000;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* Lista de opciones */
+  .modal-list {
+    list-style: none;/* sin viñetas */
+    padding: 0;/* sin padding */
+    margin: 1.5rem 0 0;/* margen superior */
+  }
+  .modal-list li + li {
+    margin-top: 0.75rem;/* separación entre opciones */
+    color: #ffffff;/* color de texto */
+  }
+  .modal-list a {
+    display: block;/* bloque para ocupar todo el ancho */
+    padding: 0.75rem 1rem;/* padding */
+    background: #112c49;/* color de fondo */
+    color: #fff;/* color de texto */
+    border-radius: 4px;/* bordes redondeados */
+    text-decoration: none;/* sin subrayado */
+    transition: background 0.2s;/ 
+  }
+  .modal-list a:hover {
+    background: #0056b3;
+    color: #fff;
+  }
+  /*----------------------------------------------------------------*/
+  /* ================= Dark Mode ================= */
+body.dark-mode {
+  --bg-base:        #121212;
+  --bg-light:       #1e1e1e;
+  --bg-lighter:     #2a2a2a;
+  --text-normal:    #e0e0e0;
+  --text-muted:     #aaaaaa;
+  --accent-color:   #0d6efd;
+  --accent-hover:   #0b5ed7;
+  --border-color:   #333333;
+  --bg-ventana:    rgb(7, 7, 7);
+
+}
+
+/* Fondo general */
+body.dark-mode {
+  background-color: var(--bg-base);
+  color: var(--text-normal);
+}
+
+/* HEADER */
+body.dark-mode header {
+  background-color: var(--bg-light);
+  
+}
+body.dark-mode .vidrio {
+  background: rgba(30, 30, 30, 0.4);
+  backdrop-filter: blur(8px);
+}
+body.dark-mode .logo-container h1 {
+  color: #fff;
+}
+body.dark-mode .icon-btn,
+body.dark-mode .icon-btn ion-icon,
+body.dark-mode .icon-btn i {
+  color: var(--text-normal);
+}
+
+/* BADGE de notificaciones */
+body.dark-mode .notification-icon .badge {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* MENU GRID */
+body.dark-mode .menu-grid {
+  background: var(--bg-base);
+}
+body.dark-mode .menu-card {
+  background-color: var(--bg-lighter);
+  border: 1px solid var(--border-color);
+}
+body.dark-mode .menu-card h4 {
+  color: var(--text-normal);
+}
+body.dark-mode .menu-card .menu-icon i,
+body.dark-mode .menu-card .menu-icon svg {
+  color: var(--accent-color);
+}
+
+/* MODAL */
+body.dark-mode .modal-overlay {
+  background: rgba(51, 49, 49, 0.822);/* fondo oscuro para atras de la ventana*/
+}
+body.dark-mode .modal-content {
+  background-color: var(--bg-ventana);/* color de fondo de la ventanita */
+  color: var(--text-normal);/* color de texto */
+}
+
+
+/* HERO SECTION */
+body.dark-mode .hero-section {
+  background-color: var(--bg-base);
+}
+body.dark-mode .hero-text h2,
+body.dark-mode .hero-text p {
+  color: var(--text-normal);
+}
+body.dark-mode .hero-section img {
+  filter: brightness(0.8);
+}
+
+/* LINKS */
+body.dark-mode a {
+  color: var(--accent-color);
+}
+body.dark-mode a:hover {
+  color: var(--accent-hover);
+}
+
+/* FOOTER */
+body.dark-mode footer {
+  background-color: var(--bg-light);
+  color: var(--text-muted);
+}
+body.dark-mode footer a {
+  color: var(--accent-color);
+}
+
+/* Botón Modo Oscuro */
+body.dark-mode #darkModeToggle ion-icon {
+  color: var(--accent-color);
+}
+
+/* inputs, selects y textarea si los tuvieras en esta página */
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+  background-color: var(--bg-lighter);
+  color: var(--text-normal);
+  border: 1px solid var(--border-color);
+}
+
+/* Scrollbar oscuro (opcional) */
+body.dark-mode ::-webkit-scrollbar {
+  width: 8px;
+}
+body.dark-mode ::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 4px;
+}
+
+/*  Modo oscuro para la ventanita de opciones para registro*/
+
+ .dark-mode
+ .modal-list a {
+    display: block;/* bloque para ocupar todo el ancho */
+    padding: 0.75rem 1rem;/* padding */
+    background: #323233;/* color de fondo */
+    color: #fff;/* color de texto */
+    border-radius: 4px;/* bordes redondeados */
+    text-decoration: none;/* sin subrayado */
+   
+  }
+ .dark-mode 
+ .modal-list a:hover {
+    background: #127df1;/* color de fondo al pasar el mouse */
+    font-weight: bold; /* o 700 */
+    color: #000000;/* color de texto */
+  }
+ .dark-mode 
+ .close-btn{
+    color: #ffffff;/* color de texto */
+  }
+/* Pseudo-elemento LED */
+header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -100%;                   /* parte fuera del viewport */
+  width: 70%;
+  height: 3px;                   /* grosor de la tira */
+  background: var(--secondary-color);
+  box-shadow: 0 0 8px var(--secondary-color),
+              0 0 16px var(--secondary-color);
+  animation: led-slide 2s linear infinite;
+}
+
+@keyframes led-slide {
+  to { left: 100%; }            /* termina fuera a la derecha */
+}

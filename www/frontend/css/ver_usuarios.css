@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor de tabla con scroll horizontal si es necesario */
+.usuarios-table-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+/* Tabla principal */
+.usuarios-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgba(10, 15, 30, 0.7);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  color: #e0f7fa;
+}
+
+/* Encabezado */
+.usuarios-table thead th {
+  background-color: rgba(0, 247, 255, 0.2);
+  color: #00ffff;
+  text-align: left;
+  padding: 14px 18px;
+  font-size: 1rem;
+  text-shadow: 0 0 6px #00ffff;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+/* Filas y celdas */
+.usuarios-table tbody td {
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  color: #ccfaff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Alternancia de fondo */
+.usuarios-table tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Hover */
+.usuarios-table tbody tr:hover {
+  background-color: rgba(0, 255, 255, 0.07);
+  transition: background-color 0.3s ease;
+}
+
+/* Scrollbar personalizado */
+.usuarios-table-container::-webkit-scrollbar {
+  height: 8px;
+}
+.usuarios-table-container::-webkit-scrollbar-track {
+  background: #0a0a23;
+}
+.usuarios-table-container::-webkit-scrollbar-thumb {
+  background-color: #00ffff;
+  border-radius: 10px;
+  border: 2px solid #0a0a23;
+}
+
+/* =====================
+   MODO CLARO
+   ===================== */
+body.light-mode .usuarios-table {
+  background: #ffffff;
+  color: #222;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .usuarios-table thead th {
+  background-color: #e0f7fa;
+  color: #006064;
+  text-shadow: none;
+  border-bottom: 1px solid #b2ebf2;
+}
+
+body.light-mode .usuarios-table tbody td {
+  color: #333;
+}
+
+body.light-mode .usuarios-table tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+body.light-mode .usuarios-table tbody tr:hover {
+  background-color: #e0f7fa;
+}
+
+body.light-mode .usuarios-table-container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+body.light-mode .usuarios-table-container::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border: 2px solid #f0f0f0;
+}

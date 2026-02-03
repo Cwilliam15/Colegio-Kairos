@@ -1,0 +1,180 @@
+/* editar_alumno.css - Estilos actualizados basados en referencia */
+/* Variables de colores y espaciados */
+:root {
+  --bg-page: #61a3b9; /* azul claro */
+  --container-bg:rgba(255, 255, 255,0.658); /* blanco ligeramente azulado */
+  --field-bg: #ffffff;
+  --field-border: #dcdcdc;
+  --label-color: #000000;
+   --color-linea:rgb(241,241,241);
+  --placeholder-color: #888888;
+  --accent: #007bff;
+  --accent-hover: #030e1a;
+  --font: 'Roboto', sans-serif;
+}
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font);
+  color: var(--label-color);
+  line-height: 1.4;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto; /* permite scroll si el contenido es muy grande */
+}
+
+
+/* Contenedor general */
+.form-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
+    gap: 1rem; /* espacio entre columnas */
+    box-shadow: -1px 3px 19px 0px rgba(255, 254, 254, 0.76);/* sombra */
+    border: 1px solid var(--color-linea);/* borde */
+    background-color: var(--container-bg);
+    padding: 3rem;
+    border-radius: 10px;
+    margin: 0.5rem;
+    max-width: 1000px; /* no tan gigante */
+    width: 100%;
+    opacity: 0.5; /* semi transparente */
+    transition: opacity 0.5s ease;
+}
+    /* Cuando paso el mouse, se hace completamente visible */
+        .form-container:hover
+        {
+            opacity: 1;
+        }
+        
+        /* Cuando están llenos, se quedan visibles para siempre */
+        .form-container.activo,
+        .form-container.activo {
+            opacity: 1;
+        }
+
+/* Título */
+.form-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;;
+}
+
+/* Grid de campos */
+.fields-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 1.5rem;;
+}
+@media (max-width: 600px) {
+  .fields-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Grupo de campo */
+.field-group {
+  display: flex;
+  flex-direction: column;
+}
+.field-group label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.field-group input,
+.field-group select,
+.field-group textarea {
+  height: 48px;
+  padding: 0 1rem;
+  background: var(--field-bg);
+  border: 1px solid var(--field-border);
+  border-radius:8px;
+  font-size: 1rem;
+  color: var(--label-color);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.field-group textarea {
+  height: auto;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.field-group input::placeholder,
+.field-group textarea::placeholder {
+  color: var(--placeholder-color);
+}
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+/* Botones de acción */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;;
+  margin-top:  1.5rem;;
+}
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius:8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  text-decoration: none;
+}
+.btn.submit {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+.btn.submit:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+.btn.cancel {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+.btn.cancel:hover {
+   background-color: var(--accent-hover);
+   transform: translateY(-2px);
+}
+
+/* Modo oscuro */
+
+body.dark-mode .form-container {
+  background-color: rgba(44, 45, 49, 0.8); /* Fondo oscuro solo aquí */
+  box-shadow: -1px 3px 19px 0px rgba(1, 245, 245, 0.8); /* Sombra turquesa */
+  border: 1px solid var(--color-linea);
+  color: rgb(167, 165, 165); /* Texto dentro de contenedores*/
+}
+body.dark-mode h2,
+body.dark-mode .field-group label {
+  color: #e0e0e0;
+}
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+  background-color: hsl(0, 0%, 23%);
+  border-color: #555;
+  color: #e0e0e0;
+}
+body.dark-mode .btn.submit {
+  background-color: #0056b3;
+}
+body.dark-mode .btn.submit:hover {
+  background-color: #004494;
+}
+body.dark-mode .btn.cancel {
+  color: #80bdff;
+}

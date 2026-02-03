@@ -1,0 +1,425 @@
+/*----------------------------------------
+  1) Variables de color (modo claro)
+----------------------------------------*/
+:root {
+  --bg-page: #ffffff;
+  --bg-main: #0a74cd;
+  --bg-container: #e0f7fa;
+  --text-primary: #0d47a1;
+  --text-secondary: #000000;
+  --text-body: #000000;
+  --border-color: #ccc;
+  --box-shadow: rgba(0, 0, 0, 0.08);
+  --btn-bg:#080808;
+  --btn-bg-hover: #00e5ff;
+  --btn-export: #2a2aa2;
+  --btn-export-hover: #0cfafaf1;  
+  --table-header-bg: #279ca0ed;/*color del encabezado de la tabla*/
+  --table-header-text:#f7f4f4;
+  --table-even-bg:    #f2f2f2;    /* filas pares en claro */
+}
+
+/*----------------------------------------
+  2) Modo oscuro
+----------------------------------------*/
+body.dark-mode {
+  --bg-page: #121212;/* fondo de la página */
+  --bg-main: #000000;/* fondo principal */
+  --bg-container: #2a2a2a;/* fondo de contenedor */
+  --text-primary: #ffffff;/* texto primario */
+  --text-secondary: #ffffff;/* texto secundario */
+  --text-body: #e0e0e0;/* texto del cuerpo */
+  --border-color: #444444;/* color del borde */
+  --box-shadow: #151E21;/* sombra de caja */
+  --btn-bg:#52aaaa;/* color de fondo del botón */
+  --btn-bg-hover: #52aaaa;/* color de fondo del botón al pasar el mouse */
+  --btn-export:  #52aaaa;/* color de fondo del botón exportar */
+  --btn-export-hover:#52aaaa;/* color de fondo del botón exportar al pasar el mouse */
+  --table-header-bg: #333333;/* color de fondo del encabezado de la tabla */
+   --table-even-bg:   #121312;     /* filas pares en oscuro */
+}
+
+/*----------------------------------------
+  3) Reset y base
+----------------------------------------*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: var(--bg-main);
+  color: var(--text-body);
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/*----------------------------------------
+  4) Encabezados
+----------------------------------------*/
+main header {
+    display: flex;
+    align-items: center;         /* mantiene todo alineado verticalmente */
+  }
+  main header h1 {
+    flex: 1;                      /* ocupa todo el espacio disponible */
+    text-align: center;           /* centra el texto dentro de ese espacio */
+    margin: 0;                    /* quitar márgenes por defecto */
+  }
+  main header a.btn {
+    margin-left: auto;            /* empuja el botón al extremo derecho */
+  }
+h2, h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+/*----------------------------------------
+  5) Dashboard y tarjetas
+----------------------------------------*/
+.dashboard-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  background: var(--btn-bg);
+  color: var(--text-body);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px var(--box-shadow);
+  flex: 0 1 220px;
+  text-align: center;
+  transition: transform 0.3s ease;/* transición suave */
+
+}
+
+
+.card:hover {
+  transform: translateY(-5px);/* eleva la tarjeta al pasar el mouse */
+}
+.card h2, .card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.card p {
+  font-size: 1rem;
+  color: var(--text-body);
+}
+
+
+
+
+/*----------------------------------------
+  6) Botones
+----------------------------------------*/
+.btn_limpiar {
+  background: var(--btn-bg);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;/* transición suave */
+}
+.btn{ 
+  background: var(--btn-bg);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.btn:hover {
+  background: var(--btn-bg-hover);
+  box-shadow:#0097a7;
+;  }
+
+ button {
+  background: var(--btn-bg);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.03s;/* transición suave */
+  box-shadow: 0 0 6px rgba(7, 32, 32, 0.3);/* sombra suave */
+}
+ button:hover {
+  background: var(--btn-bg-hover);
+}
+
+body.dark-mode a.btn {
+  background: var( --btn-export);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(11, 12, 12, 0.3);
+}
+
+body.dark-mode a.btn:hover {
+  background: var(--btn-export-hover);
+  box-shadow: 0 0 10px rgb(6, 197, 204);/* sombra suave */
+  transform: scale(1.05);/* efecto de zoom sutil */
+}
+
+
+body.dark-mode .btn_limpiar {
+  background: #52aaaa;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .btn_limpiar:hover {
+  box-shadow: 0 0 10px rgb(6, 197, 202);/* sombra suave */
+  transform: scale(1.03);/* efecto de zoom sutil */
+}
+  
+/*----------------------------------------
+  7) Filtros
+----------------------------------------*/
+.filters, .filters div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+.filters label {
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+select, input[type="date"], input[type="text"] {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background: var(--bg-page);
+  color: var(--text-body);
+  cursor: pointer;
+}
+
+
+
+
+/*8) Tabla de reportes
+----------------------------------------*/
+
+
+
+
+thead th {
+  color: var(--table-header-text);/* color del texto */
+  background-color: var(--table-header-bg);/* color de fondo del encabezado */
+  padding: 0.75rem;/* mayor espacio vertical */
+  text-align: center;/* alineación a la izquierda */
+  border-bottom: 2px solid var(--border-color);/* borde inferior */
+  
+}
+
+tbody tr:nth-child(even) {
+  background: var(--table-even-bg)/* filas fondo */
+}
+
+tbody tr:hover {
+  background: var(--bg-container); /* un hover suave */
+}
+
+tbody td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border-color);/* borde inferior */
+  color: var(--text-body);/* color del texto */
+  background-color: var(--table-even-bg);/* filas gris en claro */
+  padding: 0.20rem 0.75rem;/* mayor espacio vertical */
+}
+main table {
+  background-color: var(--table-even-bg);
+  color: #e0e0e0;/* color del texto */
+  text-align: center;
+  font-size: 0.95rem;/* tamaño de fuente */
+  border-collapse: collapse;  /* colapsar bordes */
+  width: 100%;  /* ancho completo */
+}
+
+thead th,
+tbody td {
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+}
+
+
+/*----------------------------------------
+  9) Contenedor de gráfico
+----------------------------------------*/
+
+/*---------------------------------------*/
+body.dark-mode h2, body.dark-mode h1 {
+  color: var(--text-secondary);
+}
+body.dark-mode .card {
+  background: var(--btn-bg-hover);
+}
+body.dark-mode thead {
+  background: var(--table-header-bg);
+}
+body.dark-mode tr:nth-child(even) {
+  background: rgba(255,255,255,0.05);
+}
+body.dark-mode select, body.dark-mode input {
+  background: var(--bg-container);
+  border-color: var(--border-color);
+  color: var(--text-body);
+}
+body.dark-mode table {
+  background: var(--bg-container);
+}
+
+body.dark-mode th, 
+body.dark-mode td {
+  color: var(--text-body);
+}
+
+body.dark-mode thead {
+  background: var(--btn-bg-hover);
+}
+.toast {
+  position: absolute;
+  top: -1.5rem;
+  right: 0;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.toast.show {
+  opacity: 1;
+}
+/* Botón de guardar */
+.justif-save {
+  display: block;                  /* Hace que el botón ocupe toda la línea */
+  margin: 0 auto;                  /* Centra horizontalmente */
+  background-color: #52aaaa;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.justif-save:hover {
+
+  transform: scale(1.05); /* efecto de zoom sutil */
+}/* Cambia el color de fondo al pasar el mouse */
+
+
+/* Estado “guardado” */
+.justif-save.saved {
+  background-color: #32cabe; /* verde suave */
+}
+
+/* El “toast” o mensaje de éxito */
+.save-toast {
+  display: inline-block;
+  margin-left: 0.8rem;
+  padding: 0.3rem 0.6rem;
+  background: rgb(2, 26, 8);
+  color: #28a745;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  vertical-align: middle;
+}
+
+.save-toast.show {
+  opacity: 1;
+}
+
+
+/* Paginación en Reportes.php */
+
+
+body:not(.dark-mode) #paginationControlsReport button {
+  background: rgb(204, 227, 227);
+  color: #000000;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  font-size: 0.9rem;
+  line-height: 32px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+   border: 1px solid #d7d5d5cf;
+
+}
+
+
+body:not(.dark-mode) #paginationControlsReport button:hover {
+  background: rgb(63, 175, 175);
+}
+
+body:not(.dark-mode) #paginationControlsReport button.active {
+     background: rgb(63, 175, 175);  
+      border: 1px solid #ffffff;
+
+}
+
+/*----------------------------------------
+ 10) Dark-mode adjustments
+----------------------------------------*/
+body.dark-mode #paginationControlsReport button {
+  background: #000000;  
+  color: #acacac; 
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  font-size: 0.9rem;
+  line-height: 32px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+   border: 1px solid #555252b7;
+}
+
+
+
+
+body.dark-mode #paginationControlsReport button:hover {
+  background: rgb(60, 61, 61);
+}
+
+body.dark-mode #paginationControlsReport button.active {
+    background: #383636;  
+
+}
+.justif-text {
+  min-height: 2.5rem;
+  max-height: 300px;
+  overflow-y: hidden;
+  resize: none; 
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  background-color:var(--bg-page);
+  color: #000000;
+}
+body.dark-mode .justif-text {
+  background-color: #434343;
+  color: #e0e0e0;
+}

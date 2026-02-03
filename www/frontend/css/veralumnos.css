@@ -1,0 +1,307 @@
+/*========================================
+  ver_alumnos.css - Estilos combinados + Modo Oscuro
+========================================*/
+
+/*----------------------------------------
+  1) Variables de color (modo claro)
+----------------------------------------*/
+:root {
+  --bg-page: #ffffff;/*Color de fondo de la página*/
+  --bg-main: #0a74cd;/*Color de fondo principal*/
+  --bg-container: #e3e0fa;/*Color de fondo del contenedor*/
+  --text-primary: #02060b;/* Color del texto principal*/
+  --text-secondary: #020a0c;/*Color del texto secundario*/
+  --text-body: #000000;/*Color del texto del cuerpo*/
+  --border-color: #ccc;/*Color del borde*/
+  --box-shadow: rgba(0, 0, 0, 0.08);
+  --btn-bg: #ffffff;/*Color de fondo del botón*/
+  --btn-bg-hover: #00e5ff;/*Color de fondo del botón al pasar el mouse*/
+  --table-header-bg: #52aaaa;/*Color de fondo del encabezado de la tabla*/
+  --table-even-bg:    #f2f2f2;    /* filas pares en claro */
+  --btn-bg-ver:#52aaaa;
+}
+
+/*----------------------------------------
+  2) Modo oscuro (sobreescribe variables)
+----------------------------------------*/
+body.dark-mode {
+  --bg-page: #242323;/*Color de fondo de la página*/
+  --bg-main: #000000;/*Color de fondo principal*/
+  --bg-container: #2a2a2a;/*Color de fondo del contenedor*/
+  --text-primary: #ffffff;/*Color del texto principal*/
+  --text-secondary: #03dac6;/*Color del texto secundario*/
+  --text-body: #e0e0e0;/*Color del texto del cuerpo*/
+  --border-color: #444444;/*Color del borde*/
+  --box-shadow: #151E21;/* sombra de caja */
+  --btn-bg:#52aaaa;/*Color de fondo del botón*/
+  --btn-bg-hover: #018786;/*Color de fondo del botón al pasar el mouse */
+  --table-header-bg: #333333;/* Color de fondo del encabezado de la tabla */
+  --table-even-bg: #121312;
+  --btn-bg-ver:#52aaaa;
+}
+
+/*----------------------------------------
+  3) Reset y tipografía base
+----------------------------------------*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: var(--bg-main);
+  color: var(--text-body);
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  padding: 1rem;
+}
+
+/*----------------------------------------
+  4) Encabezados
+----------------------------------------*/
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+/*----------------------------------------
+  5) Tabla de datos
+----------------------------------------*/
+thead th {
+  color: var(--table-header-text);/* color del texto */
+  background-color: var(--table-header-bg);/* color de fondo del encabezado */
+  padding: 0.75rem;/* mayor espacio vertical */
+  text-align: center;/* alineación a la izquierda */
+  border-bottom: 2px solid var(--border-color);/* borde inferior */
+  
+}
+
+ td {
+  text-align: center;/* Alineación del texto */
+  border-bottom: 1px solid var(--border-color);/*Color de la línea de separación */
+  color: var(--text-body);/* Color del texto */
+}
+th {
+  background-color: var(--table-header-bg);
+  color: white;/* Color del texto en el encabezado */
+}
+
+table {
+  background-color: var(--table-even-bg);
+  color: #e0e0e0;/* color del texto */
+  text-align: center;
+  font-size: 0.95rem;/* tamaño de fuente */
+  border-collapse: collapse;  /* colapsar bordes */
+  width: 100%;  /* ancho completo */
+}
+
+/* Imágenes QR */
+img {
+  border: 1px solid var(--border-color);
+  padding: 3px;
+  background-color: var(--bg-page);
+}
+
+/*----------------------------------------
+  6) Selects y botones generales
+----------------------------------------*/
+select,
+button {
+  padding: 5px 10px;
+  margin: 10px;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  background: var(--bg-page);
+  color: var(--text-body);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+button:hover {
+  background-color: var(--btn-bg-hover);
+}
+
+/*----------------------------------------
+  7) Dashboard (tarjetas)
+----------------------------------------*/
+.dashboard-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  background: var(--btn-bg);
+  color: var(--text-body);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px var(--box-shadow);
+  flex: 0 1 220px;
+  text-align: center;
+  transition: transform 0.3s ease;/* transición suave */
+
+}
+
+
+.card:hover {
+  transform: translateY(-5px);/* eleva la tarjeta al pasar el mouse */
+}
+.card h2, .card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.card p {
+  font-size: 1rem;
+  color: var(--text-body);
+}
+/*----------------------------------------
+  8) Botón Ver Estadística
+----------------------------------------*/
+#btnVerEstadistica {
+  display: block;
+  margin: 0 auto 1rem;
+  background: var(--btn-bg);
+  color: #000000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+}
+#btnVerEstadistica:hover {
+  background: var(--btn-bg-hover);
+}
+
+/*----------------------------------------
+ 10) Etiquetas de filtro
+----------------------------------------*/
+div > label {
+  margin-right: 0.5rem;
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+/*----------------------------------------
+ 11) Botón Ver Más en filas
+----------------------------------------*/
+button[onclick^="verMas"]{
+  background: none;
+  border: 1px solid var(--btn-bg-ver);
+  color: var(--btn-bg-ver);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+button[onclick^="verMas"]:hover{
+  background: var(--btn-bg-ver);
+  color: #fff;
+}
+/*_________________eliminar____________________*/
+
+.btn-edit, .btn-delete {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+.btn-delete { color: #dc3545; }
+.btn-edit   { color: #007bff; }
+/* Estilos base para los botones de paginación */
+
+#paginationControls button {
+  background: rgb(204, 227, 227);
+  color: #000000;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  font-size: 0.9rem;
+  line-height: 32px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Hover */
+#paginationControls button:hover {
+  background: rgb(63, 175, 175);
+}
+#paginationControls button.active {
+    background: rgb(63, 175, 175);  
+
+}
+
+.dark-mode
+#paginationControls button {
+  background: #000000;  
+  color: #acacac;    
+}
+.dark-mode
+#paginationControls button.active {
+    background: #383636;  
+
+}
+.dark-mode
+#paginationControls button:hover {
+  background: rgb(60, 61, 61);
+
+}
+
+
+/*Boton limpiar*/
+
+body.dark-mode .btn_limpiar {
+  background: #52aaaa;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .btn_limpiar:hover {
+  box-shadow: 0 0 10px rgba(6, 195, 202, 0.559);/* sombra suave */
+  transform: scale(1.03);/* efecto de zoom sutil */
+}
+/*botones*/
+.filters, .filters div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  color: var(--text-body);
+  font-weight: bold;
+}
+
+.filters select {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  background: var(--bg-page);
+  color: var(--text-body);
+  min-width: 160px;
+  cursor: pointer;
+}
+
+.btn_limpiar {
+  background:#000000;
+  color: rgb(253, 251, 251);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+.btn_limpiar:hover {
+  background: var(--btn-bg-hover);
+  box-shadow:#0097a7;
+}
