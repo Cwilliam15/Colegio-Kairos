@@ -1,3 +1,5 @@
+USE asistencia_alumno;
+
 /* =========================
    TABLAS BASE (SIN FK)
    ========================= */
@@ -115,6 +117,25 @@ CREATE TABLE Asistencias (
 
     CONSTRAINT fk_asistencia_lector
         FOREIGN KEY (Id_Lector) REFERENCES Lectores(Id_Lector)
+) ENGINE=InnoDB;
+
+/* =========================
+   HORARIOS (NUEVO MÓDULO)
+   ========================= */
+
+CREATE TABLE horarios (
+    Id_Horario INT AUTO_INCREMENT PRIMARY KEY,
+    Id_Jornada VARCHAR(4) NOT NULL,
+    Fecha DATE NOT NULL,
+    Hora_Entrada TIME NOT NULL,
+    Hora_Salida TIME NOT NULL,
+    Observaciones TEXT NULL,
+    Estado BIT DEFAULT 1,
+
+    CONSTRAINT FK_Horario_Jornada
+        FOREIGN KEY (Id_Jornada) REFERENCES Jornadas(Id_Jornada),
+
+    UNIQUE (Id_Jornada, Fecha)
 ) ENGINE=InnoDB;
 
 /* =========================
