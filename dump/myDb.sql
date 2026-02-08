@@ -24,7 +24,7 @@ CREATE TABLE Parentescos (
     parentesco VARCHAR(50) NOT NULL
 ) ENGINE=InnoDB;
 
-CREATE TABLE Lectores (
+CREATE TABLE lectores (
     Id_Lector INT AUTO_INCREMENT PRIMARY KEY,
     Ubicacion VARCHAR(50) NOT NULL,
     Tipo_Lector VARCHAR(30) NOT NULL
@@ -116,7 +116,7 @@ CREATE TABLE asistencias (
         FOREIGN KEY (Id_Detalle) REFERENCES detalle_alumnos(Id_Detalle),
 
     CONSTRAINT fk_asistencia_lector
-        FOREIGN KEY (Id_Lector) REFERENCES Lectores(Id_Lector)
+        FOREIGN KEY (Id_Lector) REFERENCES lectores(Id_Lector)
 ) ENGINE=InnoDB;
 
 /* =========================
@@ -166,7 +166,7 @@ INSERT INTO Parentescos (Id_Parentesco, parentesco) VALUES
 ('P-2','Papá'),
 ('P-3','Tío');
 
-INSERT INTO Lectores (Ubicacion, Tipo_Lector)
+INSERT INTO lectores (Ubicacion, Tipo_Lector)
 VALUES ('Puerta Principal', 'COM-5970');
 
 INSERT INTO usuarios (nombre_completo, correo, rol, usuario, contrasena)
