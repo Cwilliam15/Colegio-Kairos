@@ -4,17 +4,17 @@ USE asistencia_alumno;
    TABLAS BASE (SIN FK)
    ========================= */
 
-CREATE TABLE Jornadas (
+CREATE TABLE jornadas (
     Id_Jornada VARCHAR(4) PRIMARY KEY NOT NULL, -- J-1
     Tipo_Jornada VARCHAR(13) NOT NULL
 ) ENGINE=InnoDB;
 
-CREATE TABLE Grados (
+CREATE TABLE grados (
     Id_Grado VARCHAR(4) PRIMARY KEY NOT NULL, -- G-01 a G-99
     Nombre_Grado VARCHAR(70) NOT NULL
 ) ENGINE=InnoDB;
 
-CREATE TABLE Secciones (
+CREATE TABLE secciones (
     Id_Seccion VARCHAR(4) PRIMARY KEY NOT NULL, -- S-1 a S-9
     Nombre_Seccion VARCHAR(2) NOT NULL
 ) ENGINE=InnoDB;
@@ -48,7 +48,7 @@ CREATE TABLE usuarios (
    TABLAS PRINCIPALES
    ========================= */
 
-CREATE TABLE Alumnos (
+CREATE TABLE alumnos (
     Id_Alumno VARCHAR(7) PRIMARY KEY NOT NULL, -- Código estudiante
     Nombres_Alumno VARCHAR(50) NOT NULL,
     Apellido1_Alumno VARCHAR(15) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE Alumnos (
     Direccion_Alumno VARCHAR(100) NOT NULL
 ) ENGINE=InnoDB;
 
-CREATE TABLE Registro_Alumnos (
+CREATE TABLE registro_alumnos (
     Id_Registro_Alumno VARCHAR(6) PRIMARY KEY NOT NULL, -- R-1 a R-9999
     Id_Alumno VARCHAR(7) NOT NULL,
     Id_Jornada VARCHAR(4) NOT NULL,
@@ -66,19 +66,19 @@ CREATE TABLE Registro_Alumnos (
     Id_Seccion VARCHAR(4),
 
     CONSTRAINT fk_registro_alumno
-        FOREIGN KEY (Id_Alumno) REFERENCES Alumnos(Id_Alumno),
+        FOREIGN KEY (Id_Alumno) REFERENCES alumnos(Id_Alumno),
 
     CONSTRAINT fk_registro_jornada
-        FOREIGN KEY (Id_Jornada) REFERENCES Jornadas(Id_Jornada),
+        FOREIGN KEY (Id_Jornada) REFERENCES jornadas(Id_Jornada),
 
     CONSTRAINT fk_registro_grado
-        FOREIGN KEY (Id_Grado) REFERENCES Grados(Id_Grado),
+        FOREIGN KEY (Id_Grado) REFERENCES grados(Id_Grado),
 
     CONSTRAINT fk_registro_seccion
-        FOREIGN KEY (Id_Seccion) REFERENCES Secciones(Id_Seccion)
+        FOREIGN KEY (Id_Seccion) REFERENCES secciones(Id_Seccion)
 ) ENGINE=InnoDB;
 
-CREATE TABLE Detalle_Alumnos (
+CREATE TABLE detalle_alumnos (
     Id_Detalle VARCHAR(6) PRIMARY KEY NOT NULL,
     Id_Registro_Alumno VARCHAR(6) NOT NULL,
     Cui_Encargado VARCHAR(13) NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE Detalle_Alumnos (
 
     CONSTRAINT fk_detalle_registro
         FOREIGN KEY (Id_Registro_Alumno)
-        REFERENCES Registro_Alumnos(Id_Registro_Alumno),
+        REFERENCES registro_alumnos(Id_Registro_Alumno),
 
     CONSTRAINT fk_detalle_parentesco
         FOREIGN KEY (Id_Parentesco)
@@ -102,7 +102,7 @@ CREATE TABLE Detalle_Alumnos (
    ASISTENCIAS
    ========================= */
 
-CREATE TABLE Asistencias (
+CREATE TABLE asistencias (
     Id_Asistencia INT AUTO_INCREMENT PRIMARY KEY,
     Id_Detalle VARCHAR(6) NOT NULL,
     Fecha_Registro DATE NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE Asistencias (
     Id_Lector INT NOT NULL,
 
     CONSTRAINT fk_asistencia_detalle
-        FOREIGN KEY (Id_Detalle) REFERENCES Detalle_Alumnos(Id_Detalle),
+        FOREIGN KEY (Id_Detalle) REFERENCES detalle_alumnos(Id_Detalle),
 
     CONSTRAINT fk_asistencia_lector
         FOREIGN KEY (Id_Lector) REFERENCES Lectores(Id_Lector)
@@ -133,9 +133,9 @@ CREATE TABLE horarios (
     Estado BIT DEFAULT 1,
 
     CONSTRAINT FK_Horario_Jornada
-        FOREIGN KEY (Id_Jornada) REFERENCES Jornadas(Id_Jornada),
+        FOREIGN KEY (Id_Jornada) REFERENCES jornadas(Id_Jornada),
 
-    UNIQUE (Id_Jornada, Fecha)
+    UNIQUE (Id_jornada, Fecha)
 ) ENGINE=InnoDB;
 
 /* =========================
