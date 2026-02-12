@@ -1,0 +1,86 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f6fa;
+    margin: 0;
+    padding: 30px;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+.contenedor-jornadas {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card-jornada {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.card-jornada h2 {
+    text-align: center;
+}
+
+.calendario {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.dia {
+    padding: 10px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 2px solid transparent;
+}
+
+.dia:hover {
+    background: #dfe6e9;
+}
+
+.form-grupo {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.form-grupo input {
+    flex: 1;
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.btn-agregar {
+    padding: 6px 10px;
+    border: none;
+    background: #2d3436;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.lista-grupos {
+    margin-top: 10px;
+}
+
+.grupo-item {
+    padding: 10px;
+    border-left: 5px solid;
+    background: #f1f2f6;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}

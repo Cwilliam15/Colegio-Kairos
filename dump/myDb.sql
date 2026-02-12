@@ -177,3 +177,7 @@ VALUES (
     'admin',
     SHA2('admin123', 512)
 );
+
+INSERT INTO jornadas VALUES ('J-1','Matutina');
+INSERT INTO jornadas VALUES ('J-2','Vespertina');
+INSERT INTO jornadas VALUES ('J-3','Fin de Semana');
