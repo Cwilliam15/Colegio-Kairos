@@ -8,6 +8,8 @@
 body {
   margin: 0;
   padding: 0;
+  background: #1a2332;
+  color: #e0e0e0;
 }
 
 /* Contenedor de tabla con scroll horizontal si es necesario */
@@ -23,41 +25,40 @@ body {
 .usuarios-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: rgba(10, 15, 30, 0.7);
+  background-color: #2a3b52;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  color: #e0f7fa;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: #b8c5d9;
 }
 
 /* Encabezado */
 .usuarios-table thead th {
-  background-color: rgba(0, 247, 255, 0.2);
-  color: #00ffff;
+  background-color: #5668a3;
+  color: white;
   text-align: left;
   padding: 14px 18px;
   font-size: 1rem;
-  text-shadow: 0 0 6px #00ffff;
-  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  font-weight: 600;
+  border-bottom: 2px solid #7b92d4;
 }
 
 /* Filas y celdas */
 .usuarios-table tbody td {
   padding: 14px 18px;
   font-size: 0.95rem;
-  color: #ccfaff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #b8c5d9;
+  border-bottom: 1px solid #374a67;
 }
 
 /* Alternancia de fondo */
 .usuarios-table tbody tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: #1f2937;
 }
 
 /* Hover */
 .usuarios-table tbody tr:hover {
-  background-color: rgba(0, 255, 255, 0.07);
+  background-color: #374a67;
   transition: background-color 0.3s ease;
 }
 
@@ -66,40 +67,45 @@ body {
   height: 8px;
 }
 .usuarios-table-container::-webkit-scrollbar-track {
-  background: #0a0a23;
+  background: #1a2332;
 }
 .usuarios-table-container::-webkit-scrollbar-thumb {
-  background-color: #00ffff;
+  background-color: #5668a3;
   border-radius: 10px;
-  border: 2px solid #0a0a23;
+  border: 2px solid #1a2332;
 }
 
 /* =====================
    MODO CLARO
    ===================== */
+body.light-mode {
+  background: #f5f5f5;
+  color: #333;
+}
+
 body.light-mode .usuarios-table {
   background: #ffffff;
-  color: #222;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 body.light-mode .usuarios-table thead th {
-  background-color: #e0f7fa;
-  color: #006064;
-  text-shadow: none;
-  border-bottom: 1px solid #b2ebf2;
+  background-color: #5668a3;
+  color: white;
+  border-bottom: 2px solid #7b92d4;
 }
 
 body.light-mode .usuarios-table tbody td {
   color: #333;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 body.light-mode .usuarios-table tbody tr:nth-child(even) {
-  background-color: #f5f5f5;
+  background-color: #f8f9fa;
 }
 
 body.light-mode .usuarios-table tbody tr:hover {
-  background-color: #e0f7fa;
+  background-color: #e8eef5;
 }
 
 body.light-mode .usuarios-table-container::-webkit-scrollbar-track {
@@ -107,6 +113,47 @@ body.light-mode .usuarios-table-container::-webkit-scrollbar-track {
 }
 
 body.light-mode .usuarios-table-container::-webkit-scrollbar-thumb {
-  background-color: #007bff;
+  background-color: #5668a3;
   border: 2px solid #f0f0f0;
+}
+
+/* =====================
+   MODO OSCURO
+   ===================== */
+body.dark-mode {
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+body.dark-mode .usuarios-table {
+  background-color: #161b22;
+  color: #8b949e;
+}
+
+body.dark-mode .usuarios-table thead th {
+  background-color: #5668a3;
+  color: white;
+  border-bottom: 2px solid #7b92d4;
+}
+
+body.dark-mode .usuarios-table tbody td {
+  color: #8b949e;
+  border-bottom: 1px solid #21262d;
+}
+
+body.dark-mode .usuarios-table tbody tr:nth-child(even) {
+  background-color: #0d1117;
+}
+
+body.dark-mode .usuarios-table tbody tr:hover {
+  background-color: #21262d;
+}
+
+body.dark-mode .usuarios-table-container::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+body.dark-mode .usuarios-table-container::-webkit-scrollbar-thumb {
+  background-color: #5668a3;
+  border: 2px solid #0d1117;
 }

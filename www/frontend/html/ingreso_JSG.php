@@ -199,6 +199,8 @@ if (isset($_GET['Id_Grado'])) {
                     </a>
                   </li>
                 <?php endif; ?>
+
+                
               <li>
                 <a href="ingresos_alumnos.php" title="Ingreso Estudiantes">
                   <svg

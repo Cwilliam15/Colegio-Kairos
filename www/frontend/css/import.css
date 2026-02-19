@@ -27,7 +27,6 @@
 body {
   background: linear-gradient(135deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
   display: flex;
-  justify-content: center;
   align-items: center;
   min-height: 100vh;
   position: relative;
