@@ -114,6 +114,9 @@ if (isset($_GET['Id_Grado'])) {
     <title>Colegio Kairos</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/clases.css?=v6.0">
+     <link rel="stylesheet"href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+     
+
 </head>
 
 <body>
@@ -398,8 +401,7 @@ if (isset($_GET['Id_Grado'])) {
         </form>
       </div>
     </div>
-    <!-- Tablas de datos -->
-    <div class="tables">
+<div class="tables">
       <!-- Jornadas -->
       <section class="table-box">
         <h3>Jornadas Registradas</h3>
@@ -410,7 +412,8 @@ $res = $conexion->query(
    ORDER BY CAST(SUBSTRING(id_jornada, 3) AS UNSIGNED) ASC"
 );        if ($res && $res->num_rows):
         ?>
-        <table>
+        <!-- Se agrega el id="tabla-jornadas" para que DataTables lo identifique exactamente -->
+        <table id="tabla-jornadas">
           <thead>
             <tr><th>ID</th><th>Jornada</th><th>Acciones</th></tr>
           </thead>
@@ -446,7 +449,8 @@ $res = $conexion->query(
 );
         if ($res && $res->num_rows):
         ?>
-        <table>
+        <!-- Se agrega el id="tabla-secciones" para que DataTables lo identifique exactamente -->
+        <table id="tabla-secciones">
           <thead>
             <tr><th>ID</th><th>Sección</th><th>Acciones</th></tr>
           </thead>
@@ -483,7 +487,8 @@ $res = $conexion->query(
 ");
         if ($res && $res->num_rows):
         ?>
-        <table>
+        <!-- Se agrega el id="tabla-grados" para que DataTables lo identifique exactamente -->
+        <table id="tabla-grados">
           <thead>
             <tr><th>ID</th><th>Grado</th><th>Acciones</th></tr>
           </thead>
@@ -524,5 +529,63 @@ $res = $conexion->query(
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../js/scrip.js"></script>
     <script src="../js/validacionesJSG.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+    <!-- =====================================================================
+         DATATABLES — Inicialización de las tres tablas
+         Se ejecuta cuando el DOM está completamente cargado (document.ready).
+    ====================================================================== -->
+    <script>
+    $(document).ready(function () {
+
+        // Configuración compartida para las tres tablas
+        // Se define como objeto para no repetir código
+        var opcionesComunes = {
+
+            // language: carga la traducción al español desde el CDN oficial de DataTables
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+            },
+
+            // pageLength: cantidad de filas visibles por defecto al cargar la página
+            // Se establece en 10 como solicitado
+            pageLength: 10,
+
+            // lengthMenu: opciones disponibles en el selector "Mostrar X registros"
+            // El usuario puede cambiar entre 10, 20, 30, 50 o ver todos (All)
+            lengthMenu: [
+                [10, 20, 30, 50, -1],          // Valores numéricos (-1 = todos)
+                [10, 20, 30, 50, 'Todos']       // Etiquetas que se muestran en el select
+            ],
+
+            // ordering: permite ordenar columnas al hacer clic en el encabezado
+            // Se mantiene true para no quitar funcionalidad
+            ordering: true,
+
+            // searching: muestra el campo de búsqueda rápida en tiempo real
+            // Se mantiene true para añadir valor sin afectar el diseño
+            searching: true,
+
+            // columnDefs: configuración por columna
+            // Se desactiva el ordenamiento en la columna "Acciones" (última columna, índice 2)
+            // para evitar que la columna del botón "Eliminar" sea ordenable sin sentido
+            columnDefs: [
+                { orderable: false, targets: -1 }   // -1 = última columna (Acciones)
+            ]
+        };
+
+        // Inicializa DataTables en la tabla de Jornadas usando el id asignado en el HTML
+        $('#tabla-jornadas').DataTable(opcionesComunes);
+
+        // Inicializa DataTables en la tabla de Secciones usando el id asignado en el HTML
+        $('#tabla-secciones').DataTable(opcionesComunes);
+
+        // Inicializa DataTables en la tabla de Grados usando el id asignado en el HTML
+        $('#tabla-grados').DataTable(opcionesComunes);
+
+    }); // Fin de document.ready
+    </script>
+
 </body>
 </html>

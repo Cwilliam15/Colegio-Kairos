@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap'); 
 :root
-
 {
     --color-barra-lateral :rgb(255,255,255);
     --color-texto:rgb(0,0,0);
@@ -21,7 +20,7 @@
 .dark-mode {
     --color-barra-lateral: #232323;
     --color-texto: white;
-    --color-texto-menu: #4bd9b0;
+    --color-texto-menu: #444444;
     --color-menu-hover: #0D0D0D;
     --color-menu-hover-text: #4bd9b0;
     --color-boton: #4bd9b0;
@@ -337,7 +336,7 @@ main.min-main
         body.dark-mode .contenedor1,
         body.dark-mode .contenedor2 {
             background-color: rgba(44, 45, 49, 0.8); /* Fondo oscuro solo aquí */
-            box-shadow: -1px 3px 19px 0px rgba(1, 245, 245, 0.8); /* Sombra turquesa */
+            box-shadow: -1px 3px 19px 0px #4bd9b0; /* Sombra turquesa */
             border: 1px solid var(--color-linea); /* Borde gris */
             color: rgb(167, 165, 165); /* Texto dentro de contenedores 1 y 2 */
         }
@@ -653,21 +652,19 @@ main.min-main
   position: absolute;
   top: 1.5rem;      /* separación del borde superior */
   right: 1.5rem;    /* separación del borde derecho */
-  background: var(--color-accent);
-  color: var(--color-text-dark);
+  background: #0D0D0D;
+  color: #ffffff;
+  text-decoration:none;
   border: none;
-  padding: 0.6rem;
-  border-radius: 50%;
-  font-size: 1.25rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
   filter: drop-shadow(--shadow-neon);
   cursor: pointer;
-  transition:
-    background var(--transition-fast),
-    box-shadow var(--transition-fast),
-    transform var(--transition-fast);
+ 
 }
 .btn-importar:hover {
-  background: var(--color-accent-d);
+  background: #1aa47d;
    filter: drop-shadow(--shadow-neon);
   transform: scale(1.1);
 }
@@ -675,6 +672,19 @@ main.min-main
   outline: none;
   filter: drop-shadow(--shadow-neon);
 }
+
+body.dark-mode a.btn-importar {
+  background: var( --btn-export);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(11, 12, 12, 0.3);
+}
+
+body.dark-mode a.btn-importar:hover {
+  background: var(--btn-export-hover);
+  box-shadow: 0 0 10px rgb(6, 197, 204);/* sombra suave */
+  transform: scale(1.05);/* efecto de zoom sutil */
+}
+
 .texto-contenido.cuerpo {
   position: relative;
 }
@@ -735,3 +745,5 @@ main.min-main
 .notification-bar.show {
   transform: translateY(0);
 }
+
+

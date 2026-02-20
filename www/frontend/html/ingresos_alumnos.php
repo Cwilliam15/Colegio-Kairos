@@ -16,6 +16,7 @@ include('../../backend/php_be/conexion.php');
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css" />
+  <script src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
 </head>
 
 <body>
@@ -276,19 +277,17 @@ include('../../backend/php_be/conexion.php');
     href="import_alumnos.php" 
     class="btn-importar" 
     title="Importar Excel"
+
+    class="btn"
+     style="display: flex; flex-direction:row; align-items:center;"
   >
-<svg width="60" height="60" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg">
-  <!-- Documento con fondo blanco, contorno tipo hoja y esquina doblada interna -->
-  <path d="M12 0h36l12 12v66a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" fill="#fff" stroke="#666" stroke-width="2"/>
-  <path d="M48 0v12h12" fill="none" stroke="#666" stroke-width="2"/>
-
-  <!-- Etiqueta EXCEL (más grande) -->
-  <rect x="12" y="18" width="40" height="16" rx="3" ry="3" fill="#21A366"/>
-  <text x="32" y="30" font-size="11" font-family="Arial, sans-serif" font-weight="bold" text-anchor="middle" fill="white">EXCEL</text>
-
-  <!-- Flecha hacia arriba (grande, centrada en la parte inferior) -->
-  <path d="M32 58 L22 68 H28 V76 H36 V68 H42 Z" fill="#21A366"/>
-</svg>
+<animated-icons
+  src="https://animatedicons.co/get-icon?name=upload&style=minimalistic&token=b68988ad-448c-4fbb-9562-6b3e7d435d0c"
+  trigger="hover"
+  attributes='{"variationThumbColour":"#536DFE","variationName":"Two Tone","variationNumber":2,"numberOfGroups":2,"backgroundIsGroup":false,"strokeWidth":1,"defaultColours":{"group-1":"#4BD9B000","group-2":"#12A178FF","background":"#FFFFFF"}}'
+  height="35"
+  width="35"
+></animated-icons> Importar excel
   </a>
 
     <!-----------------------------------------FORMULARIO DE INGRESO DE REGISTROS DE ALUMNOS CON SUS DATOS---------------------------------->

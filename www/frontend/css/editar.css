@@ -1,14 +1,14 @@
 /* editar_alumno.css - Estilos actualizados basados en referencia */
 /* Variables de colores y espaciados */
 :root {
-  --bg-page: #61a3b9; /* azul claro */
+  --bg-page: #4bd9b0; /* azul claro */
   --container-bg:rgba(255, 255, 255,0.658); /* blanco ligeramente azulado */
   --field-bg: #ffffff;
   --field-border: #dcdcdc;
   --label-color: #000000;
    --color-linea:rgb(241,241,241);
   --placeholder-color: #888888;
-  --accent: #007bff;
+  --accent: #4bd9b0;
   --accent-hover: #030e1a;
   --font: 'Roboto', sans-serif;
 }
@@ -114,7 +114,7 @@ main {
 .field-group textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+  box-shadow: 0 0 0 4px #24ad86;
 }
 
 /* Botones de acción */
@@ -154,7 +154,7 @@ main {
 
 body.dark-mode .form-container {
   background-color: rgba(44, 45, 49, 0.8); /* Fondo oscuro solo aquí */
-  box-shadow: -1px 3px 19px 0px rgba(1, 245, 245, 0.8); /* Sombra turquesa */
+  box-shadow: -1px 3px 19px 0px #4bd9b0; /* Sombra turquesa */
   border: 1px solid var(--color-linea);
   color: rgb(167, 165, 165); /* Texto dentro de contenedores*/
 }
@@ -170,10 +170,10 @@ body.dark-mode textarea {
   color: #e0e0e0;
 }
 body.dark-mode .btn.submit {
-  background-color: #0056b3;
+  background-color: #4bd9b0;
 }
 body.dark-mode .btn.submit:hover {
-  background-color: #004494;
+  background-color: #26be93;
 }
 body.dark-mode .btn.cancel {
   color: #80bdff;

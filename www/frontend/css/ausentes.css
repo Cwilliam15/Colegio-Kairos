@@ -3,22 +3,22 @@
 ----------------------------------------*/
 :root {
   --bg-page: #ffffff;
-  --bg-main: #0a74cd;
+  --bg-main: #4bd9b0;
   --bg-container: #e0f7fa;
-  --text-primary: #0d47a1;
+  --text-primary: #4bd9b0;
   --text-secondary: #000000;
   --text-body: #000000;
   --border-color: #ccc;
   --box-shadow: rgba(0, 0, 0, 0.08);
   --btn-bg:#080808;
   --btn-bg-hover: #00e5ff;
-  --btn-export: #2a2aa2;
+  --btn-export: #17ae83;
   --btn-export-hover: #0cfafaf1;  
-  --table-header-bg: #279ca0ed;/*color del encabezado de la tabla*/
+  --table-header-bg: #1cb187;/*color del encabezado de la tabla*/
   --table-header-text:#f7f4f4;
   --table-even-bg:    #f2f2f2;    /* filas pares en claro */
 }
-
+btn
 /*----------------------------------------
   2) Modo oscuro
 ----------------------------------------*/
@@ -31,10 +31,10 @@ body.dark-mode {
   --text-body: #e0e0e0;/* texto del cuerpo */
   --border-color: #444444;/* color del borde */
   --box-shadow: #151E21;/* sombra de caja */
-  --btn-bg:#52aaaa;/* color de fondo del botón */
-  --btn-bg-hover: #52aaaa;/* color de fondo del botón al pasar el mouse */
-  --btn-export:  #52aaaa;/* color de fondo del botón exportar */
-  --btn-export-hover:#52aaaa;/* color de fondo del botón exportar al pasar el mouse */
+  --btn-bg:#2cc096;/* color de fondo del botón */
+  --btn-bg-hover: #4bd9b0;/* color de fondo del botón al pasar el mouse */
+  --btn-export:  #4bd9b0;/* color de fondo del botón exportar */
+  --btn-export-hover:#4bd9b0;/* color de fondo del botón exportar al pasar el mouse */
   --table-header-bg: #333333;/* color de fondo del encabezado de la tabla */
    --table-even-bg:   #121312;     /* filas pares en oscuro */
 }
@@ -48,7 +48,7 @@ body.dark-mode {
   padding: 0;
 }
 body {
-  background: var(--bg-main);
+  background: var(--bg-main) !important;
   color: var(--text-body);
   font-family: Arial, sans-serif;
   line-height: 1.5;
@@ -114,7 +114,7 @@ h2, h1 {
 }
 .card p {
   font-size: 1rem;
-  color: var(--text-body);
+  color: #0d0d0d;
 }
 
 
@@ -143,8 +143,8 @@ h2, h1 {
 }
 .btn:hover {
   background: var(--btn-bg-hover);
-  box-shadow:#0097a7;
-;  }
+  box-shadow:#30b892;
+  }
 
  button {
   background: var(--btn-bg);
@@ -167,7 +167,7 @@ body.dark-mode a.btn {
 }
 
 body.dark-mode a.btn:hover {
-  background: var(--btn-export-hover);
+  background: #1aa47d;
   box-shadow: 0 0 10px rgb(6, 197, 204);/* sombra suave */
   transform: scale(1.05);/* efecto de zoom sutil */
 }
@@ -180,7 +180,7 @@ body.dark-mode .btn_limpiar {
 }
 
 body.dark-mode .btn_limpiar:hover {
-  box-shadow: 0 0 10px rgb(6, 197, 202);/* sombra suave */
+  box-shadow: 0 0 10px #29bc92;/* sombra suave */
   transform: scale(1.03);/* efecto de zoom sutil */
 }
   
@@ -263,7 +263,7 @@ tbody td {
 
 /*---------------------------------------*/
 body.dark-mode h2, body.dark-mode h1 {
-  color: var(--text-secondary);
+  color: #0D0D0D;
 }
 body.dark-mode .card {
   background: var(--btn-bg-hover);

@@ -1,18 +1,18 @@
 /* 1) Defino variables de color por defecto (modo claro) */
 :root {
   --bg-page: #ffffff;
-  --bg-main: #0a74cd;
+  --bg-main: #4bd9b0;
   --bg-container: #e0f7fa;
-  --text-primary: #0d47a1;
-  --text-secondary: #007c91;
+  --text-primary: #4bd9b0;
+  --text-secondary: #21b98e;
   --text-body: #0c0b0b;
   --border-color: #ccc;
   --box-shadow: rgba(0,0,0,0.08);
-  --btn-bg: #00bcd4;
-  --btn-bg-hover: #0097a7;
+  --btn-bg: #4bd9b0;
+  --btn-bg-hover: #4bd9b0;
   --mensaje-exito-bg: #e6ffed;
-  --mensaje-exito-text: #276749;
-  --mensaje-exito-border: #38a169;
+  --mensaje-exito-text: #4bd9b0;
+  --mensaje-exito-border: #4bd9b0;
   --mensaje-error-bg: #ffe6e6;
   --mensaje-error-text: #c53030;
   --mensaje-error-border: #e53e3e;
@@ -20,7 +20,7 @@
   --delete-color: #d32f2f;
 }
 
-
+display:block
 /* 2) Sobreescribo en modo oscuro */
 body.dark-mode {
   --bg-page:    #292828;/*color para los forms y tables*/
@@ -30,9 +30,9 @@ body.dark-mode {
   --text-secondary: #f5f5f5;/* color de los textos secundarios */
   --text-body: #e0e0e0;/* color de los textos del cuerpo NO TITULOS de llas tablas,forms */
   --border-color: #444444;/* color de los bordes de los label o lines de tablas*/
-  --box-shadow: rgba(19, 241, 230, 0.658);/* color de la sombra */
-  --btn-bg: #1db9aa;/* color de fondo de los botones */
-  --btn-bg-hover: #1ecfcf;/* color de fondo de los botones al pasar el mouse */
+  --box-shadow: #4bd9b0;/* color de la sombra */
+  --btn-bg: #4bd9b0;/* color de fondo de los botones */
+  --btn-bg-hover: #4bd9b0;/* color de fondo de los botones al pasar el mouse */
   --mensaje-exito-bg: #223322;/* color de fondo del mensaje de exito */
   --mensaje-exito-text: #a3be8c;/* color del texto del mensaje de exito */
   --mensaje-exito-border: #88c0d0;/* color del borde del mensaje de exito */
@@ -50,7 +50,7 @@ body.dark-mode {
 main.container {
   padding: 20px;/* Espacio interno */
   transition: margin-left 0.5s ease, background 0.3s;/* Transición suave */
-  background: var(--bg-main);/* Color de fondo */
+  background: var(--bg-main) !important;/* Color de fondo */
   color: var(--text-body);/* Color del texto */
 }
 
@@ -144,16 +144,14 @@ main.container h2 {
 
 /* Tablas */
 .tables {
-  display:block;
-  gap: 1.5rem;
-  margin-left: 18px; /* alejar de la barra lateral */
-
+  display: flex;           /* fila horizontal — las 3 cards quedan juntas */
+  flex-wrap: nowrap;       /* no saltan de línea en desktop */
+  align-items: flex-start; /* cada card tiene su propia altura */
+  gap: 1.5rem;             /* separación entre las 3 cards */
+  padding: 0 2rem;         /* mismo padding lateral que .forms */
+  margin-bottom: 2rem;
 }
 
-.tables {
-  display: block;/* para que las tablas se vean verticalmente */
-  margin-left: 18px;/* alejar de la barra lateral */
-}
 .tables > * {/*los sigmos es para seleccionar las 3 tablas y el efecto sea generañ*/
   margin-bottom: 1.5rem; /* para separar las tarjetas */
 }
@@ -165,7 +163,13 @@ main.container h2 {
   padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0 4px 12px var(--box-shadow);
-  
+
+  flex: 1 1 0;        /* las 3 cards se reparten el espacio en partes iguales */
+  min-width: 0;       /* permite que flex encoja sin desbordarse */
+
+  /* scroll horizontal interno si la tabla no cabe en el card */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table-box h3 {
@@ -175,12 +179,13 @@ main.container h2 {
   text-align: center;
 }
 
+
 table {
   width: 100%;
+  min-width: 260px;
   border-collapse: collapse;
   font-size: 0.95rem;
-  color: var(--text-body);/* Color del texto */
-  
+  color: var(--text-body);
 }
 
 thead {
@@ -191,12 +196,19 @@ th, td {
   padding: 0.75rem;
   border-bottom: 1px solid var(--border-color);
   text-align: left;
+  word-break: break-word;
 }
+
+
+
+
 
 .btn-delete {
   color: var(--delete-color);
   font-weight: bold;
   text-decoration: none;
+  display: inline-block;
+  padding: 2px 4px;
 }
 
 .btn-delete:hover {
@@ -215,12 +227,56 @@ th, td {
 .formulario__grupo-correcto input { border-color: #4caf50; }
 .formulario__grupo-incorrecto input { border-color: #e53935; }
 @media screen and (max-width: 960px) {
+  /* Formularios en columna */
   .forms {
-    flex-wrap: wrap; /* ahora sí permitimos que salten a una nueva línea */
+    flex-wrap: wrap;
+  }
+  .form-box {
+    flex: 1 1 100%;
   }
 
-  .form-box {
-    flex: 1 1 100%; /* ocupan todo el ancho si es muy angosto */
+  /* Tablas en columna — cada card ocupa todo el ancho */
+  .tables {
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+  .table-box {
+    flex: 1 1 100%;
+  }
+}
+
+/* =====================================================================
+   RESPONSIVO — Móvil (≤ 600px)
+   Ajustes de espaciado y tipografía.
+====================================================================== */
+@media screen and (max-width: 600px) {
+  .tables {
+    padding: 0 0.5rem;
+  }
+  .table-box {
+    padding: 1rem;
+  }
+  main.container h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* =====================================================================
+   RESPONSIVO — Móvil muy pequeño (≤ 480px)
+   Controles de DataTables en columna.
+====================================================================== */
+@media screen and (max-width: 480px) {
+  .dataTables_length,
+  .dataTables_filter {
+    width: 100%;
+    text-align: left !important;
+    margin-bottom: 0.5rem;
+  }
+  .dataTables_info,
+  .dataTables_paginate {
+    width: 100%;
+    text-align: left !important;
+    margin-top: 0.5rem;
   }
 }
 /* ALERTA flotante superior */
@@ -259,3 +315,116 @@ th, td {
   from { opacity: 0; transform: translate(-50%, -40px); }
   to   { opacity: 0.95; transform: translate(-50%, 0); }
 }
+
+/* --- Contenedor general que genera DataTables alrededor de cada tabla --- */
+        .dataTables_wrapper {
+            font-size: 0.95rem;           /* Igual que la fuente de tus tablas originales */
+            color: var(--text-body);      /* Usa tu variable de color de texto */
+        }
+
+        /* --- Selector "Mostrar X registros" (parte superior izquierda) --- */
+        .dataTables_length label,
+        .dataTables_length select {
+            color: var(--text-body);                  /* Color del texto */
+            background-color: var(--bg-page);         /* Fondo igual al card */
+            border: 1px solid var(--border-color);    /* Borde con tu variable */
+            border-radius: 0.4rem;
+            padding: 2px 6px;
+        }
+
+        /* --- Caja de búsqueda (parte superior derecha) --- */
+        .dataTables_filter label,
+        .dataTables_filter input {
+            color: var(--text-body);
+            background-color: var(--bg-page);
+            border: 1px solid var(--border-color);
+            border-radius: 0.4rem;
+            padding: 4px 8px;
+        }
+
+        /* --- Información "Mostrando X de Y registros" (parte inferior izquierda) --- */
+        .dataTables_info {
+            color: var(--text-body);
+            font-size: 0.85rem;
+        }
+
+        /* --- Controles de paginación (parte inferior derecha) --- */
+        .dataTables_paginate .paginate_button {
+            background-color: var(--bg-page) !important;
+            color: var(--text-body) !important;
+            border: 1px solid var(--border-color) !important;
+            border-radius: 0.4rem !important;
+            padding: 4px 10px !important;
+            margin: 0 2px;
+            cursor: pointer;
+        }
+
+        /* Botón de página activa — usa tu color primario */
+        .dataTables_paginate .paginate_button.current,
+        .dataTables_paginate .paginate_button.current:hover {
+            background: var(--btn-bg) !important;
+            color: #fff !important;
+            border-color: var(--btn-bg) !important;
+        }
+
+        /* Hover en botones de paginación */
+        .dataTables_paginate .paginate_button:hover {
+            background: var(--btn-bg-hover) !important;
+            color: #fff !important;
+        }
+
+        /* --- Cabecera de columna con orden (flechitas) — respeta tu thead --- */
+        table.dataTable thead th {
+            background-color: var(--table-header-bg);  /* Tu variable de encabezado */
+            color: var(--text-body);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* --- Ajuste de espacio entre los controles y la tabla --- */
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter {
+            margin-bottom: 0.75rem;
+        }
+
+        /* =====================================================================
+           MODO OSCURO — Se activan cuando body tiene la clase .dark-mode,
+           igual que el resto de tu sistema de tema oscuro.
+        ====================================================================== */
+        body.dark-mode .dataTables_length label,
+        body.dark-mode .dataTables_length select,
+        body.dark-mode .dataTables_filter label,
+        body.dark-mode .dataTables_filter input {
+            background-color: var(--bg-container);   /* Fondo oscuro para inputs */
+            color: var(--text-body);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode .dataTables_info {
+            color: var(--text-body);
+        }
+
+        body.dark-mode .dataTables_paginate .paginate_button {
+            background-color: var(--bg-container) !important;
+            color: var(--text-body) !important;
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode .dataTables_paginate .paginate_button.current,
+        body.dark-mode .dataTables_paginate .paginate_button.current:hover {
+            background: var(--btn-bg) !important;
+            color: #0D0D0D !important;              /* Texto oscuro sobre botón activo */
+            border-color: var(--btn-bg) !important;
+        }
+
+        body.dark-mode table.dataTable thead th {
+            background-color: var(--table-header-bg);
+            color: var(--text-secondary);
+        }
+
+        /* Filas alternadas en modo oscuro */
+        body.dark-mode table.dataTable tbody tr {
+            background-color: var(--bg-page);
+        }
+        body.dark-mode table.dataTable tbody tr:hover {
+            background-color: var(--bg-container);
+        }

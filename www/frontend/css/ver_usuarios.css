@@ -8,7 +8,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #1a2332;
+  background: transparent;
   color: #e0e0e0;
 }
 
@@ -25,7 +25,7 @@ body {
 .usuarios-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #2a3b52;
+  background-color: transparent;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -34,13 +34,13 @@ body {
 
 /* Encabezado */
 .usuarios-table thead th {
-  background-color: #5668a3;
+  background-color: #2db28c;
   color: white;
   text-align: left;
   padding: 14px 18px;
   font-size: 1rem;
   font-weight: 600;
-  border-bottom: 2px solid #7b92d4;
+  border-bottom: 2px solid #4bd9b0;
 }
 
 /* Filas y celdas */
@@ -48,17 +48,17 @@ body {
   padding: 14px 18px;
   font-size: 0.95rem;
   color: #b8c5d9;
-  border-bottom: 1px solid #374a67;
+  border-bottom: 1px solid #4bd9b0;
 }
 
 /* Alternancia de fondo */
 .usuarios-table tbody tr:nth-child(even) {
-  background-color: #1f2937;
+  background-color: #555555e5;
 }
 
 /* Hover */
 .usuarios-table tbody tr:hover {
-  background-color: #374a67;
+  background-color: #444444;
   transition: background-color 0.3s ease;
 }
 
@@ -70,7 +70,7 @@ body {
   background: #1a2332;
 }
 .usuarios-table-container::-webkit-scrollbar-thumb {
-  background-color: #5668a3;
+  background-color: #2cc096;
   border-radius: 10px;
   border: 2px solid #1a2332;
 }
@@ -90,9 +90,9 @@ body.light-mode .usuarios-table {
 }
 
 body.light-mode .usuarios-table thead th {
-  background-color: #5668a3;
+  background-color: #29bc92;
   color: white;
-  border-bottom: 2px solid #7b92d4;
+  border-bottom: 2px solid #4bd9b0;
 }
 
 body.light-mode .usuarios-table tbody td {
@@ -113,7 +113,7 @@ body.light-mode .usuarios-table-container::-webkit-scrollbar-track {
 }
 
 body.light-mode .usuarios-table-container::-webkit-scrollbar-thumb {
-  background-color: #5668a3;
+  background-color: #4bd9b0;
   border: 2px solid #f0f0f0;
 }
 
@@ -131,9 +131,9 @@ body.dark-mode .usuarios-table {
 }
 
 body.dark-mode .usuarios-table thead th {
-  background-color: #5668a3;
+  background-color: #3cc9a1;
   color: white;
-  border-bottom: 2px solid #7b92d4;
+  border-bottom: 2px solid #4bd9b0;
 }
 
 body.dark-mode .usuarios-table tbody td {
@@ -154,6 +154,6 @@ body.dark-mode .usuarios-table-container::-webkit-scrollbar-track {
 }
 
 body.dark-mode .usuarios-table-container::-webkit-scrollbar-thumb {
-  background-color: #5668a3;
+  background-color: #4bd9b0;
   border: 2px solid #0d1117;
 }

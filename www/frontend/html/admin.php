@@ -268,7 +268,7 @@ if ($_SESSION['rol'] != 'admin') {
 <animated-icons
   src="https://animatedicons.co/get-icon?name=user%20profile&style=minimalistic&token=9b327b61-1433-451f-a476-148402217e82"
   trigger="hover"
-  attributes='{"variationThumbColour":"#A4A7A9","variationName":"Gray Tone","variationNumber":3,"numberOfGroups":1,"strokeWidth":1.5,"backgroundIsGroup":true,"defaultColours":{"group-1":"#1e3a5f","background":"#BFCDE400"}}'
+  attributes='{"variationThumbColour":"#A4A7A9","variationName":"Gray Tone","variationNumber":3,"numberOfGroups":1,"strokeWidth":1.5,"backgroundIsGroup":true,"defaultColours":{"group-1":"#21a983","background":"#BFCDE400"}}'
   height="60"
   width="60"
 ></animated-icons>
@@ -279,7 +279,7 @@ if ($_SESSION['rol'] != 'admin') {
 <animated-icons
   src="https://animatedicons.co/get-icon?name=Team&style=minimalistic&token=9c840f28-8274-4ee6-b5b3-7707bde20ce4"
   trigger="hover"
-  attributes='{"variationThumbColour":"#A4A7A9","variationName":"Gray Tone","variationNumber":3,"numberOfGroups":1,"strokeWidth":1.5,"backgroundIsGroup":true,"defaultColours":{"group-1":"#1e3a5f","background":"#BFCDE400"}}'
+  attributes='{"variationThumbColour":"#A4A7A9","variationName":"Gray Tone","variationNumber":3,"numberOfGroups":1,"strokeWidth":1.5,"backgroundIsGroup":true,"defaultColours":{"group-1":"#21a983","background":"#BFCDE400"}}'
   height="60"
   width="60"
 ></animated-icons>
@@ -290,7 +290,7 @@ if ($_SESSION['rol'] != 'admin') {
 <animated-icons
   src="https://animatedicons.co/get-icon?name=Activity&style=minimalistic&token=59f1f68e-13c8-4253-a639-70e484ca7057"
   trigger="hover"
-  attributes='{"variationThumbColour":"#A4A7A9","variationName":"Gray Tone","variationNumber":3,"numberOfGroups":1,"strokeWidth":1.5,"backgroundIsGroup":true,"defaultColours":{"group-1":"#1E3A5FFF","background":"#BFCDE400"}}'
+  attributes='{"variationThumbColour":"#A4A7A9","variationName":"Gray Tone","variationNumber":3,"numberOfGroups":1,"strokeWidth":1.5,"backgroundIsGroup":true,"defaultColours":{"group-1":"#21a983","background":"#BFCDE400"}}'
   height="60"
   width="60"
 ></animated-icons>
@@ -301,7 +301,7 @@ if ($_SESSION['rol'] != 'admin') {
 <animated-icons
   src="https://animatedicons.co/get-icon?name=Edit%20V2&style=minimalistic&token=59f1f68e-13c8-4253-a639-70e484ca7057"
   trigger="hover"
-  attributes='{"variationThumbColour":"#A4A7A9","variationName":"Gray Tone","variationNumber":3,"numberOfGroups":1,"strokeWidth":1.5,"backgroundIsGroup":true,"defaultColours":{"group-1":"#1E3A5FFF","background":"#BFCDE400"}}'
+  attributes='{"variationThumbColour":"#A4A7A9","variationName":"Gray Tone","variationNumber":3,"numberOfGroups":1,"strokeWidth":1.5,"backgroundIsGroup":true,"defaultColours":{"group-1":"#21a983","background":"#BFCDE400"}}'
   height="60"
   width="60"
 ></animated-icons>
@@ -312,7 +312,7 @@ if ($_SESSION['rol'] != 'admin') {
 <animated-icons
   src="https://animatedicons.co/get-icon?name=delete&style=minimalistic&token=c1352b7b-2e14-4124-b8fd-a064d7e44225"
   trigger="hover"
-  attributes='{"variationThumbColour":"#A4A7A9","variationName":"Gray Tone","variationNumber":3,"numberOfGroups":1,"strokeWidth":1.5,"backgroundIsGroup":true,"defaultColours":{"group-1":"#1E3A5FFF","background":"#BFCDE400"}}'
+  attributes='{"variationThumbColour":"#A4A7A9","variationName":"Gray Tone","variationNumber":3,"numberOfGroups":1,"strokeWidth":1.5,"backgroundIsGroup":true,"defaultColours":{"group-1":"#21a983","background":"#BFCDE400"}}'
   height="50"
   width="50"
 ></animated-icons>
@@ -442,4 +442,4 @@ setTimeout(() => {
 </main>
     <script src="../js/scrip.js"></script>
 </body>
-</html>
+</html>ver_usuarios.php
