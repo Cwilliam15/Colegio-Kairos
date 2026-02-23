@@ -96,8 +96,10 @@ if (!isset($_SESSION['rol'])) {
     <h4>Reportes</h4>
   </div>
 </a>
+
 <?php if ($_SESSION['rol'] == 'admin') { ?>
 <a href="admin.php" class="menu-card-link">
+
   <div class="menu-card">
     <div class="menu-icon">
       <animated-icons
@@ -112,6 +114,32 @@ if (!isset($_SESSION['rol'])) {
   </div>
 </a>
 <?php } ?>
+
+<!-- GESTIÒN DE HORARIOS -->
+<?php if ($_SESSION['rol'] === 'admin' || $_SESSION['rol'] === 'admin2'): ?>
+<a href="gestion_horarios.php" class="menu-card-link">
+
+  <div class="menu-card">
+    <div class="menu-icon">
+
+      <script src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
+<animated-icons
+  src="https://animatedicons.co/get-icon?name=Schedule&style=minimalistic&token=5be054c1-2954-4c87-9287-f1e6362c8da3"
+  trigger="hover"
+  attributes='{"variationThumbColour":"#536DFE","variationName":"Two Tone","variationNumber":2,"numberOfGroups":2,"backgroundIsGroup":false,"strokeWidth":2.5,"defaultColours":{"group-1":"#1836D7","group-2":"#00BCD4FF","background":"#FFFFFF00"}}'
+  height="80"
+  width="80"
+></animated-icons>
+      
+    </div>
+    <h4>Gestión de Horarios</h4>
+  </div>
+
+</a>
+<?php endif; ?>
+
+
+
 <div id="ingresoModal" class="modal-overlay" style="display:none;">
   <div class="modal-content">
     <button id="closeModal" class="close-btn">&times;</button>
