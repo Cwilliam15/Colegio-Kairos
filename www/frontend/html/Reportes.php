@@ -28,6 +28,7 @@ date_default_timezone_set('America/Guatemala');
     thead tr { background:#eee; }
     .btn { background:#000; color:#fff; padding:.5rem 1rem; border-radius:.25rem; text-decoration:none; }
  </style>
+ <script src="https://animatedicons.co/scripts/embed-animated-icons.js"></script>
 </head>
 <body>
     <div class="menu">
@@ -230,7 +231,14 @@ date_default_timezone_set('America/Guatemala');
           'jornada' => $jornadaSel
         ]) ?>"
        class="btn"
-    >Exportar a PDF</a>
+     style="display: flex; flex-direction:row; align-items:center;"> 
+<animated-icons
+  src="https://animatedicons.co/get-icon?name=download&style=minimalistic&token=c041d11b-9e1b-4f4b-b4fe-782ea93cace6"
+  trigger="hover"
+  attributes='{"variationThumbColour":"#536DFE","variationName":"Two Tone","variationNumber":2,"numberOfGroups":2,"backgroundIsGroup":false,"strokeWidth":1,"defaultColours":{"group-1":"#FFFFFF00","group-2":"#12A178FF","background":"#FFFFFFFF"}}'
+  height="35"
+  width="35"
+></animated-icons> Exportar a PDF </a>
   </header>
 
 
