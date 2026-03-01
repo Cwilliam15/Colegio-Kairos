@@ -1,138 +1,204 @@
-const API = "../../php_be/horarios/";
+/* ============================================================
+   CONFIGURAR RUTA API
+===============================================================*/
 
-let jornadaActual = "1";
-let diasSeleccionados = [];
+const API = "/backend/php_be/horarios/";
 
-/* ===============================
-   SELECCIONAR DIAS
-=================================*/
+/* ============================================================
+   UTILIDADES
+===============================================================*/
 
-document.addEventListener("click", function (e) {
+function horaToMin(hora) {
+    const [h, m] = hora.split(":").map(Number);
+    return h * 60 + m;
+}
 
-    if (e.target.classList.contains("dia")) {
+function hayChoque(nuevaEntrada, nuevaSalida, horariosExistentes) {
+    const inicioNuevo = horaToMin(nuevaEntrada);
+    const finNuevo = horaToMin(nuevaSalida);
 
-        const fecha = e.target.dataset.fecha;
+    for (let h of horariosExistentes) {
 
-        if (diasSeleccionados.includes(fecha)) {
-            diasSeleccionados = diasSeleccionados.filter(d => d !== fecha);
-            e.target.classList.remove("activo");
+        if (!h.Hora_Entrada || !h.Hora_Salida) continue;
+
+        const inicioExistente = horaToMin(h.Hora_Entrada);
+        const finExistente = horaToMin(h.Hora_Salida);
+
+        if (inicioNuevo < finExistente && finNuevo > inicioExistente) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/* ============================================================
+   SELECCIONAR DIAS CON COLOR DINÁMICO
+===============================================================*/
+
+document.addEventListener("change", function (e) {
+
+    if (e.target.matches(".dia input")) {
+
+        const label = e.target.closest(".dia");
+        const card = e.target.closest(".card-jornada");
+        const colorPicker = card.querySelector(".color-grupo");
+
+        if (e.target.checked) {
+            label.classList.add("activo");
+            label.style.backgroundColor = colorPicker.value;
+            label.style.color = "#fff";
         } else {
-            diasSeleccionados.push(fecha);
-            e.target.classList.add("activo");
+            label.classList.remove("activo");
+            label.style.backgroundColor = "";
+            label.style.color = "";
         }
     }
 });
 
-/* ===============================
-   GUARDAR HORARIO
-=================================*/
-
-async function guardarHorario() {
-
-    const entrada = document.getElementById("horaEntrada").value;
-    const salida = document.getElementById("horaSalida").value;
-    const obs = document.getElementById("observaciones").value;
-
-    if (diasSeleccionados.length === 0) {
-        alert("Seleccione al menos un día");
-        return;
-    }
-
-    const res = await fetch(API + "guardar.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            jornada: jornadaActual,
-            dias: diasSeleccionados,
-            entrada,
-            salida,
-            obs
-        })
-    });
-
-    const data = await res.json();
-
-    alert(data.message);
-
-    diasSeleccionados = [];
-    document.querySelectorAll(".dia").forEach(d => d.classList.remove("activo"));
-
-    listarHorarios();
-}
-
-/* ===============================
-   LISTAR HORARIOS
-=================================*/
-
-async function listarHorarios() {
-
-    const res = await fetch(API + "listar.php?jornada=" + jornadaActual);
-    const data = await res.json();
-
-    console.log("Horarios:", data);
-}
-
-listarHorarios();
-
-
 /* ============================================================
-   ====================  VALIDACION QR  =======================
+   ACTUALIZAR COLOR SI CAMBIA EL PICKER
 ===============================================================*/
 
-/*
-Este método se ejecuta cuando el lector QR
-envía el código (generalmente simula Enter)
-*/
+document.addEventListener("input", function (e) {
 
-document.getElementById("qrInput").addEventListener("keypress", async function (e) {
+    if (e.target.matches(".color-grupo")) {
 
-    if (e.key === "Enter") {
+        const card = e.target.closest(".card-jornada");
+        const nuevoColor = e.target.value;
 
-        const carnet = this.value.trim();
-        this.value = "";
-
-        validarHorarioQR(carnet);
+        card.querySelectorAll(".dia input:checked").forEach(input => {
+            const label = input.closest(".dia");
+            label.style.backgroundColor = nuevoColor;
+            label.style.color = "#fff";
+        });
     }
 });
 
+/* ============================================================
+   GUARDAR
+===============================================================*/
 
-async function validarHorarioQR(carnet) {
+document.addEventListener("click", async function (e) {
 
-    const res = await fetch("../../php_be/asistencia/validar_qr.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ carnet })
+    if (e.target.classList.contains("btn-agregar")) {
+
+        const card = e.target.closest(".card-jornada");
+
+        const jornada = card.dataset.jornada;
+        const entrada = card.querySelector(".entrada").value;
+        const salida = card.querySelector(".salida").value;
+        const obs = card.querySelector(".obs").value;
+        const color = card.querySelector(".color-grupo")?.value || "#3498db";
+
+        const diasSeleccionados = [];
+
+        card.querySelectorAll(".dia input:checked").forEach(d => {
+            diasSeleccionados.push(d.value);
+        });
+
+        if (!entrada || !salida) {
+            alert("Debe ingresar hora de entrada y salida");
+            return;
+        }
+
+        if (horaToMin(entrada) >= horaToMin(salida)) {
+            alert("La hora de entrada debe ser menor que la de salida");
+            return;
+        }
+
+        if (diasSeleccionados.length === 0) {
+            alert("Seleccione al menos un día");
+            return;
+        }
+
+        try {
+
+            for (let fecha of diasSeleccionados) {
+
+                await fetch(API + "guardar.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        Id_Jornada: jornada,
+                        Fecha: fecha,
+                        Hora_Entrada: entrada,
+                        Hora_Salida: salida,
+                        Observaciones: obs,
+                        Color: color
+                    })
+                });
+            }
+
+            alert("Horario(s) guardado(s)");
+            limpiarFormulario(card);
+            listarHorarios(jornada);
+
+        } catch (error) {
+            console.error(error);
+            alert("Error al guardar");
+        }
+    }
+});
+
+/* ============================================================
+   LISTAR HORARIOS
+===============================================================*/
+
+async function listarHorarios(jornada) {
+
+    try {
+
+        const res = await fetch(API + "listar.php?jornada=" + jornada);
+        const data = await res.json();
+
+        const card = document.querySelector(`.card-jornada[data-jornada="${jornada}"]`);
+        const lista = card.querySelector(".lista-grupos");
+
+        lista.innerHTML = "";
+
+        data.forEach(h => {
+
+            lista.innerHTML += `
+            <div class="grupo-item" data-id="${h.Id_Horario}" 
+                 style="border-left: 8px solid ${h.Color || '#3498db'}">
+                
+                <strong>${h.Fecha}</strong><br>
+                ${h.Hora_Entrada} - ${h.Hora_Salida}<br>
+                <small>${h.Observaciones ?? ""}</small><br><br>
+            </div>
+            `;
+        });
+
+    } catch (error) {
+        console.error("Error al listar:", error);
+    }
+}
+
+/* ============================================================
+   LIMPIAR FORMULARIO
+===============================================================*/
+
+function limpiarFormulario(card) {
+
+    card.querySelectorAll(".dia input").forEach(d => {
+        d.checked = false;
+        const label = d.closest(".dia");
+        label.classList.remove("activo");
+        label.style.backgroundColor = "";
+        label.style.color = "";
     });
 
-    const data = await res.json();
-
-    mostrarResultado(data);
+    card.querySelector(".entrada").value = "";
+    card.querySelector(".salida").value = "";
+    card.querySelector(".obs").value = "";
 }
 
+/* ============================================================
+   CARGAR AL INICIAR
+===============================================================*/
 
-function mostrarResultado(data) {
-
-    const box = document.getElementById("resultadoQR");
-
-    box.className = "";
-
-    if (data.estado === "A_TIEMPO") {
-        box.classList.add("verde");
-        box.innerHTML = "🟢 A TIEMPO";
-    }
-
-    else if (data.estado === "TARDE") {
-        box.classList.add("amarillo");
-        box.innerHTML = "🟡 TARDE";
-    }
-
-    else if (data.estado === "FUERA") {
-        box.classList.add("rojo");
-        box.innerHTML = "🔴 FUERA DE HORARIO";
-    }
-
-    else {
-        box.classList.add("gris");
-        box.innerHTML = "⚠ SIN HORARIO";
-    }
-}
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".card-jornada").forEach(card => {
+        listarHorarios(card.dataset.jornada);
+    });
+});

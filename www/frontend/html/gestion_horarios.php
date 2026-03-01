@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 if (!isset($_SESSION['rol'])) {
     header("Location: menu.php");
@@ -18,30 +18,68 @@ if (!isset($_SESSION['rol'])) {
 
 <div class="contenedor-jornadas">
 
-    <?php 
-    $jornadas = [
-        "J-1" => "Jornada Matutina",
-        "J-2" => "Jornada Vespertina",
-        "J-3" => "Jornada Fin de Semana"
-    ];
-    foreach($jornadas as $id => $nombre): ?>
+<?php 
+$jornadas = [
+    "J-1" => "Jornada Matutina",
+    "J-2" => "Jornada Vespertina",
+    "J-3" => "Jornada Fin de Semana"
+];
+
+foreach($jornadas as $id => $nombre): ?>
+
+<div class="card-jornada" data-jornada="<?= $id ?>">
     
-    <div class="card-jornada" data-jornada="<?= $id ?>">
-        <h2><?= $nombre ?></h2>
+    <h2><?= $nombre ?></h2>
 
-        <div class="calendario" id="cal-<?= $id ?>"></div>
+    <!-- =========================
+         FORMULARIO NUEVO GRUPO
+    ==========================-->
 
-        <div class="form-grupo">
-            <input type="time" class="entrada" placeholder="Hora entrada">
-            <input type="time" class="salida" placeholder="Hora salida">
-            <input type="text" class="obs" placeholder="Observaciones">
-            <button class="btn-agregar">Añadir Grupo</button>
+    <div class="form-grupo">
+
+        <!-- Selector de días -->
+        <div class="dias-container">
+            <?php 
+            $dias = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+            foreach($dias as $dia): ?>
+                <label class="dia">
+                    <input type="checkbox" value="<?= $dia ?>">
+                    <span><?= $dia ?></span>
+                </label>
+            <?php endforeach; ?>
         </div>
 
-        <div class="lista-grupos"></div>
+        <!-- Horas -->
+        <div class="horas-container">
+            <input type="time" class="entrada" title="Hora de entrada">
+            <input type="time" class="salida" title="Hora de salida">
+        </div>
+
+        <!-- Observaciones -->
+        <input type="text" class="obs" placeholder="Observaciones">
+
+        <!-- Selector de color -->
+        <div class="color-container">
+            <label>Color del grupo:</label>
+            <input type="color" class="color-grupo" value="#2563eb">
+        </div>
+
+        <!-- Botón -->
+        <button class="btn-agregar">Añadir Grupo</button>
+
     </div>
 
-    <?php endforeach; ?>
+    <!-- =========================
+         LISTA DE GRUPOS GUARDADOS
+    ==========================-->
+
+    <div class="lista-grupos">
+        <!-- Aquí se insertan dinámicamente los grupos -->
+    </div>
+
+</div>
+
+<?php endforeach; ?>
 
 </div>
 

@@ -130,6 +130,7 @@ CREATE TABLE horarios (
     Hora_Entrada TIME NOT NULL,
     Hora_Salida TIME NOT NULL,
     Observaciones TEXT NULL,
+    Color VARCHAR(20) DEFAULT '#2563eb',
     Estado BIT DEFAULT 1,
 
     CONSTRAINT FK_Horario_Jornada
