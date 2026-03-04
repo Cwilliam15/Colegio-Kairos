@@ -1,48 +1,40 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+header('Content-Type: application/json');
 require_once __DIR__ . '/../conexion.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-if (!isset($data['jornada'], $data['dias'], $data['entrada'], $data['salida'])) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Datos incompletos"
-    ]);
+if (
+    empty($data['Id_Jornada']) ||
+    empty($data['Fecha']) ||
+    empty($data['Hora_Entrada']) ||
+    empty($data['Hora_Salida'])
+) {
+    echo json_encode(["success" => false, "message" => "Datos incompletos"]);
     exit;
 }
 
-$jornada = $data['jornada'];
-$dias = $data['dias'];
-$entrada = $data['entrada'];
-$salida = $data['salida'];
-$obs = $data['obs'] ?? null;
-
 $stmt = $conexion->prepare("
     INSERT INTO horarios 
-    (Id_Jornada, Fecha, Hora_Entrada, Hora_Salida, Observaciones)
-    VALUES (?, ?, ?, ?, ?)
+    (Id_Jornada, Fecha, Hora_Entrada, Hora_Salida, Observaciones, Color)
+    VALUES (?, ?, ?, ?, ?, ?)
 ");
 
-$errores = [];
+$stmt->bind_param(
+    "ssssss",
+    $data['Id_Jornada'],
+    $data['Fecha'],
+    $data['Hora_Entrada'],
+    $data['Hora_Salida'],
+    $data['Observaciones'],
+    $data['Color']
+);
 
-foreach ($dias as $fecha) {
-    $stmt->bind_param("sssss", $jornada, $fecha, $entrada, $salida, $obs);
-    
-    if (!$stmt->execute()) {
-        $errores[] = $fecha;
-    }
-}
-
-if (count($errores) > 0) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Algunas fechas no se guardaron (posible duplicado)",
-        "errores" => $errores
-    ]);
+if ($stmt->execute()) {
+    echo json_encode(["success" => true, "message" => "Guardado correctamente"]);
 } else {
-    echo json_encode([
-        "success" => true,
-        "message" => "Horarios guardados correctamente"
-    ]);
+    echo json_encode(["success" => false, "message" => $stmt->error]);
 }

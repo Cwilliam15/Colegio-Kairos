@@ -146,6 +146,7 @@ CREATE TABLE horarios_especiales (
     Hora_Salida TIME NULL,
     Tipo ENUM('MODIFICADO','SUSPENDIDO') DEFAULT 'MODIFICADO',
     Observaciones TEXT NULL,
+    Color VARCHAR(20) DEFAULT '#2563eb',
     Estado BIT DEFAULT 1,
 
     CONSTRAINT FK_HorarioEspecial_Jornada

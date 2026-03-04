@@ -1,3 +1,7 @@
+/* ============================================================
+   ESTILO GENERAL
+===============================================================*/
+
 body {
     font-family: 'Segoe UI', sans-serif;
     background: #f5f6fa;
@@ -9,7 +13,12 @@ body {
     text-align: center;
     font-size: 40px;
     margin-bottom: 40px;
+    font-weight: bold;
 }
+
+/* ============================================================
+   CONTENEDOR DE JORNADAS
+===============================================================*/
 
 .contenedor-jornadas {
     display: flex;
@@ -22,65 +31,187 @@ body {
     background: white;
     padding: 20px;
     border-radius: 15px;
-    width: 400px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 420px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card-jornada:hover {
+    transform: translateY(-3px);
 }
 
 .card-jornada h2 {
     text-align: center;
-}
-
-.calendario {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-    margin-top: 15px;
     margin-bottom: 15px;
 }
 
-.dia {
-    padding: 10px;
-    text-align: center;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.2s;
-    border: 2px solid transparent;
-}
-
-.dia:hover {
-    background: #dfe6e9;
-}
+/* ============================================================
+   FORMULARIO
+===============================================================*/
 
 .form-grupo {
     display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
-.form-grupo input {
+.horas-container {
+    display: flex;
+    gap: 10px;
+}
+
+.form-grupo input[type="time"],
+.form-grupo input[type="text"] {
     flex: 1;
-    padding: 6px;
+    padding: 8px;
     border-radius: 8px;
     border: 1px solid #ccc;
+    font-size: 14px;
 }
 
-.btn-agregar {
-    padding: 6px 10px;
+.color-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+input[type="color"] {
     border: none;
-    background: #2d3436;
-    color: white;
-    border-radius: 8px;
+    width: 50px;
+    height: 35px;
     cursor: pointer;
 }
 
+/* ============================================================
+   BOTONES
+===============================================================*/
+
+.btn-agregar,
+.btn-editar,
+.btn-eliminar,
+.btn-guardar-edit,
+.btn-cancelar {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-right: 5px;
+    transition: 0.2s;
+}
+
+.btn-agregar {
+    background: #2d3436;
+    color: white;
+}
+
+.btn-agregar:hover {
+    background: #000;
+}
+
+.btn-editar {
+    background: #0984e3;
+    color: white;
+}
+
+.btn-eliminar {
+    background: #d63031;
+    color: white;
+}
+
+.btn-guardar-edit {
+    background: #00b894;
+    color: white;
+}
+
+.btn-cancelar {
+    background: #636e72;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* ============================================================
+   DIAS SELECCIONABLES
+===============================================================*/
+
+.dias-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.dia {
+    background: #e5e7eb;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 13px;
+    user-select: none;
+}
+
+.dia input {
+    display: none;
+}
+
+.dia.activo {
+    background: #2563eb;
+    color: white;
+}
+
+/* ============================================================
+   LISTA DE GRUPOS
+===============================================================*/
+
 .lista-grupos {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .grupo-item {
-    padding: 10px;
-    border-left: 5px solid;
     background: #f1f2f6;
-    margin-bottom: 8px;
-    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.grupo-item:hover {
+    transform: scale(1.01);
+}
+
+/* Vista edición */
+
+.edit-mode input {
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+/* ============================================================
+   RESPONSIVE
+===============================================================*/
+
+@media (max-width: 900px) {
+
+    .contenedor-jornadas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-jornada {
+        width: 95%;
+    }
+
+    .horas-container {
+        flex-direction: column;
+    }
 }
