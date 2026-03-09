@@ -144,7 +144,7 @@ CREATE TABLE horarios (
    ========================= */
 
 CREATE TABLE logs_actividades (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY
     usuario_id INT NOT NULL,
     actividad VARCHAR(255) NOT NULL,
     ip_usuario VARCHAR(45) NOT NULL,
