@@ -123,42 +123,21 @@ CREATE TABLE asistencias (
    HORARIOS (NUEVO MÓDULO)
    ========================= */
 
-CREATE TABLE horarios_base (
-    Id_Horario_Base INT AUTO_INCREMENT PRIMARY KEY,
-    Id_Jornada VARCHAR(4) NOT NULL,
-    Hora_Entrada TIME NOT NULL,
-    Hora_Salida TIME NOT NULL,
-    Estado BIT DEFAULT 1,
-
-    CONSTRAINT FK_HorarioBase_Jornada
-        FOREIGN KEY (Id_Jornada)
-        REFERENCES jornadas(Id_Jornada),
-
-    UNIQUE (Id_Jornada)
-) ENGINE=InnoDB;
-
-/* Tabla para registrar horarios especiales (modificaciones o suspensiones) */
-CREATE TABLE horarios_especiales (
-    Id_Horario_Especial INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE horarios (
+    Id_Horario INT AUTO_INCREMENT PRIMARY KEY,
     Id_Jornada VARCHAR(4) NOT NULL,
     Fecha DATE NOT NULL,
-    Hora_Entrada TIME NULL,
-    Hora_Salida TIME NULL,
-    Tipo ENUM('MODIFICADO','SUSPENDIDO') DEFAULT 'MODIFICADO',
+    Hora_Entrada TIME NOT NULL,
+    Hora_Salida TIME NOT NULL,
     Observaciones TEXT NULL,
     Color VARCHAR(20) DEFAULT '#2563eb',
     Estado BIT DEFAULT 1,
 
-    CONSTRAINT FK_HorarioEspecial_Jornada
-        FOREIGN KEY (Id_Jornada)
-        REFERENCES jornadas(Id_Jornada),
+    CONSTRAINT FK_Horario_Jornada
+        FOREIGN KEY (Id_Jornada) REFERENCES jornadas(Id_Jornada),
 
-    UNIQUE (Id_Jornada, Fecha)
+    UNIQUE (Id_jornada, Fecha)
 ) ENGINE=InnoDB;
-
-
-
-
 
 /* =========================
    LOGS DE ACTIVIDADES
