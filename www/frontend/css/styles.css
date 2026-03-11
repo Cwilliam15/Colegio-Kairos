@@ -13,25 +13,26 @@
     --color-switch-circulo:rgb(3, 3, 3);
     --color-scroll:rgb(192,192,192);
     --color-scroll-hover:rgb(134,134,134);
-    --color-body:rgb(10, 117, 205);
+    --color-body:#4bd9b0;
     --color-moon:black;
     --color-contenedor:rgba(255, 255, 255,0.658);
 }
-.dark-mode{
-    --color-barra-lateral :rgb(44,45,49);
-    --color-texto:white;
-    --color-texto-menu:rgb(110,110,117);
-    --color-menu-hover:rgb(0,0,0);
-    --color-menu-hover-text:rgb(238,238,238);
-    --color-boton:rgb(255,255,255);
-    --color-boton-texto:rgb(0,0,0);
-    --color-linea:rgb(71,70,78);
-    --color-switch-base:rgb(32, 228, 192);
-    --color-switch-circulo:rgb(255,255,255);
-    --color-scroll:rgb(68,69,74);
-    --color-scroll-hover:rgb(85,85,85);
-    --color-body:rgb(0,0,7);
-    --color-moon:white;
+.dark-mode {
+    --color-barra-lateral: #232323;
+    --color-texto: white;
+    --color-texto-menu: #444444;
+    --color-menu-hover: #0D0D0D;
+    --color-menu-hover-text: #4bd9b0;
+    --color-boton: #4bd9b0;
+    --color-boton-texto: #0D0D0D;
+    --color-linea: #333333;
+    --color-switch-base: #4bd9b0;
+    --color-switch-circulo: rgb(255,255,255);
+    --color-scroll: #444444;
+    --color-scroll-hover: #333333;
+    --color-body: #0D0D0D;
+    --color-moon: white;
+    --color-contenedor: #232323;
 }
 *{
     margin: 0;
@@ -284,13 +285,6 @@ main.min-main
 /*------------------------------------------------------FORMULARIO DE REGISTROS-----------------------------------------------------*/
 
 
-
-
-
-
-
-
-
 .contenedor1  {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
@@ -342,7 +336,7 @@ main.min-main
         body.dark-mode .contenedor1,
         body.dark-mode .contenedor2 {
             background-color: rgba(44, 45, 49, 0.8); /* Fondo oscuro solo aquí */
-            box-shadow: -1px 3px 19px 0px rgba(1, 245, 245, 0.8); /* Sombra turquesa */
+            box-shadow: -1px 3px 19px 0px #4bd9b0; /* Sombra turquesa */
             border: 1px solid var(--color-linea); /* Borde gris */
             color: rgb(167, 165, 165); /* Texto dentro de contenedores 1 y 2 */
         }
@@ -658,21 +652,19 @@ main.min-main
   position: absolute;
   top: 1.5rem;      /* separación del borde superior */
   right: 1.5rem;    /* separación del borde derecho */
-  background: var(--color-accent);
-  color: var(--color-text-dark);
+  background: #0D0D0D;
+  color: #ffffff;
+  text-decoration:none;
   border: none;
-  padding: 0.6rem;
-  border-radius: 50%;
-  font-size: 1.25rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
   filter: drop-shadow(--shadow-neon);
   cursor: pointer;
-  transition:
-    background var(--transition-fast),
-    box-shadow var(--transition-fast),
-    transform var(--transition-fast);
+ 
 }
 .btn-importar:hover {
-  background: var(--color-accent-d);
+  background: #1aa47d;
    filter: drop-shadow(--shadow-neon);
   transform: scale(1.1);
 }
@@ -680,6 +672,19 @@ main.min-main
   outline: none;
   filter: drop-shadow(--shadow-neon);
 }
+
+body.dark-mode a.btn-importar {
+  background: var( --btn-export);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(11, 12, 12, 0.3);
+}
+
+body.dark-mode a.btn-importar:hover {
+  background: var(--btn-export-hover);
+  box-shadow: 0 0 10px rgb(6, 197, 204);/* sombra suave */
+  transform: scale(1.05);/* efecto de zoom sutil */
+}
+
 .texto-contenido.cuerpo {
   position: relative;
 }
@@ -740,3 +745,5 @@ main.min-main
 .notification-bar.show {
   transform: translateY(0);
 }
+
+
